@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailedCreateOrder_With_LineItems" xml:space="preserve">
+    <value>{"orderNumber":"order_123","orderDescription":"My order description","currencyCode":"SEK","totalAmount":8.4375,"salesChannel":"My sales channel","salesLocationId":"My sales location id","customer":{"customerId":"My customer id","emailAddress":"sample@mycustomer.com","name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"homeTelephone":"+4681234567","workTelephone":"+4682345678","mobileTelephone":"+467099999999"},"billTo":{"name":{"companyName":"Test company"},"address":{"street1":"The company street 1","street2":"The company street 2","street3":"The company street 3","street4":"The company street 4","city":"Stockholm","postalCode":"12345","regionCode":"SL","countryCode":"SWE"}},"shipTo":{"name":{"title":"Mr.","firstName":"John","middleNames":"","lastName":"Testsson","suffix":"Sr."},"address":{"street1":"The customer street 1","street2":"The customer street 2","street3":"The customer street 3","street4":"The customer street 4","city":"Gothenburg","postalCode":"54321","regionCode":"VG","countryCode":"SWE"}},"lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Some article1","description":"A nice little Some article 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"ODD"},{"id":"id:2","articleNumber":"num:2","name":"Some article2","description":"A nice little Some article 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"EVEN"}]}</value>
+  </data>
+  <data name="SimpleCreateOrder" xml:space="preserve">
+    <value>{"orderNumber":"order_123","currencyCode":"SEK","totalAmount":112.53}</value>
+  </data>
+  <data name="DetailedCreateOrder_With_TravelLineItems" xml:space="preserve">
+    <value>{"orderNumber":"order_123","orderDescription":"My order description","currencyCode":"SEK","totalAmount":8.4375,"salesChannel":"My sales channel","salesLocationId":"My sales location id","customer":{"customerId":"My customer id","emailAddress":"sample@mycustomer.com","name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"homeTelephone":"+4681234567","workTelephone":"+4682345678","mobileTelephone":"+467099999999"},"billTo":{"name":{"companyName":"Test company"},"address":{"street1":"The company street 1","street2":"The company street 2","street3":"The company street 3","street4":"The company street 4","city":"Stockholm","postalCode":"12345","regionCode":"SL","countryCode":"SWE"}},"shipTo":{"name":{"title":"Mr.","firstName":"John","middleNames":"","lastName":"Testsson","suffix":"Sr."},"address":{"street1":"The customer street 1","street2":"The customer street 2","street3":"The customer street 3","street4":"The customer street 4","city":"Gothenburg","postalCode":"54321","regionCode":"VG","countryCode":"SWE"}},"lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Flight - A to B1","description":"A nice little Flight - A to B 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"Air","travelData":{"bookingReference":"Booking ref 1","travelSegments":[{"segmentType":"Air","departureAirportCode":"IATA:ARN","arrivalAirportCode":"IATA:GOT","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}},{"id":"id:2","articleNumber":"num:2","name":"Train - A to B2","description":"A nice little Train - A to B 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"Rail","travelData":{"bookingReference":"Booking ref 2","travelSegments":[{"segmentType":"Rail","departureStationCode":"ESTOCOLMO CITY","arrivalStationCode":"GBG CITY","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}}]}</value>
+  </data>
+  <data name="SimpleInitPayment" xml:space="preserve">
+    <value>{"orderId":"a83aec2a-f9fd-4193-978a-83b3e474769d","totalAmount":112.53,"paymentChannelId":1,"interfaceOptions":{"interfaceId":5,"customerLanguageCode":"SWE","urlRedirectSuccess":"https://foo.com/payments/success","urlRedirectCancel":"https://foo.com/payments/cancel","urlRedirectPending":"https://foo.com/payments/pending"}}</value>
+  </data>
+  <data name="DetailedInitPaymentRequest_With_LineItems" xml:space="preserve">
+    <value>{"orderId":"a83aec2a-f9fd-4193-978a-83b3e474769d","totalAmount":8.4375,"paymentChannelId":1,"paymentMethods":[{"id":1},{"id":2}],"customData":[{"key":"key1","value":"value1"},{"key":"key2","value":"value2"}],"sessionTimeout":180,"routingIndicator":"some indicator","fraudScreeningProfile":"some fraud profile","interfaceOptions":{"interfaceId":5,"customerLanguageCode":"SWE","urlRedirectSuccess":"https://foo.com/payments/success","urlRedirectCancel":"https://foo.com/payments/cancel","urlRedirectPending":"https://foo.com/payments/pending"},"profilePaymentOptions":{"profileId":"My profile id","profileCard":{"cardId":"a245ba13-a18c-467a-a7fc-951352e5263d","cvc":"111"},"displaySaveProfileCardOption":true},"lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Some article1","description":"A nice little Some article 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"ODD"},{"id":"id:2","articleNumber":"num:2","name":"Some article2","description":"A nice little Some article 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"EVEN"}]}</value>
+  </data>
+  <data name="DetailedInitPaymentRequest_With_TravelLineItems" xml:space="preserve">
+    <value>{"orderId":"a83aec2a-f9fd-4193-978a-83b3e474769d","totalAmount":8.4375,"paymentChannelId":1,"paymentMethods":[{"id":1},{"id":2}],"customData":[{"key":"key1","value":"value1"},{"key":"key2","value":"value2"}],"sessionTimeout":180,"routingIndicator":"some indicator","fraudScreeningProfile":"some fraud profile","interfaceOptions":{"interfaceId":5,"customerLanguageCode":"SWE","urlRedirectSuccess":"https://foo.com/payments/success","urlRedirectCancel":"https://foo.com/payments/cancel","urlRedirectPending":"https://foo.com/payments/pending"},"profilePaymentOptions":{"profileId":"My profile id","profileCard":{"cardId":"a245ba13-a18c-467a-a7fc-951352e5263d","cvc":"111"},"displaySaveProfileCardOption":true},"lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Flight - A to B1","description":"A nice little Flight - A to B 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"Air","travelData":{"bookingReference":"Booking ref 1","travelSegments":[{"segmentType":"Air","departureAirportCode":"IATA:ARN","arrivalAirportCode":"IATA:GOT","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}},{"id":"id:2","articleNumber":"num:2","name":"Train - A to B2","description":"A nice little Train - A to B 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"Rail","travelData":{"bookingReference":"Booking ref 2","travelSegments":[{"segmentType":"Rail","departureStationCode":"ESTOCOLMO CITY","arrivalStationCode":"GBG CITY","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}}]}</value>
+  </data>
+  <data name="FinalizeAuth_With_LineItems" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":112.75,"invoiceId":"invoice1","lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Some article1","description":"A nice little Some article 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"ODD"},{"id":"id:2","articleNumber":"num:2","name":"Some article2","description":"A nice little Some article 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"EVEN"}]}</value>
+  </data>
+  <data name="FinalizeAuth_With_TravelLineItems" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":112.75,"invoiceId":"invoice1","lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Flight - A to B1","description":"A nice little Flight - A to B 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"Air","travelData":{"bookingReference":"Booking ref 1","travelSegments":[{"segmentType":"Air","departureAirportCode":"IATA:ARN","arrivalAirportCode":"IATA:GOT","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}},{"id":"id:2","articleNumber":"num:2","name":"Train - A to B2","description":"A nice little Train - A to B 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"Rail","travelData":{"bookingReference":"Booking ref 2","travelSegments":[{"segmentType":"Rail","departureStationCode":"ESTOCOLMO CITY","arrivalStationCode":"GBG CITY","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}}]}</value>
+  </data>
+  <data name="SimpleFinalizeAuth" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":112.75,"invoiceId":"invoice1"}</value>
+  </data>
+  <data name="SimpleRefundPayment" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75,"invoiceId":"invoice1"}</value>
+  </data>
+  <data name="RefundPayment_With_LineItems" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75,"invoiceId":"invoice1","lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Some article1","description":"A nice little Some article 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"ODD"},{"id":"id:2","articleNumber":"num:2","name":"Some article2","description":"A nice little Some article 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"EVEN"}]}</value>
+  </data>
+  <data name="RefundPayment_With_TravelLineItems" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75,"invoiceId":"invoice1","lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Flight - A to B1","description":"A nice little Flight - A to B 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"Air","travelData":{"bookingReference":"Booking ref 1","travelSegments":[{"segmentType":"Air","departureAirportCode":"IATA:ARN","arrivalAirportCode":"IATA:GOT","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}},{"id":"id:2","articleNumber":"num:2","name":"Train - A to B2","description":"A nice little Train - A to B 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"Rail","travelData":{"bookingReference":"Booking ref 2","travelSegments":[{"segmentType":"Rail","departureStationCode":"ESTOCOLMO CITY","arrivalStationCode":"GBG CITY","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}}]}</value>
+  </data>
+  <data name="AnnulAuth_With_LineItems" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75,"lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Some article1","description":"A nice little Some article 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"ODD"},{"id":"id:2","articleNumber":"num:2","name":"Some article2","description":"A nice little Some article 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"EVEN"}]}</value>
+  </data>
+  <data name="AnnulAuth_With_TravelLineItems" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75,"lineItems":[{"id":"id:1","articleNumber":"num:1","name":"Flight - A to B1","description":"A nice little Flight - A to B 1","productUrl":"http://foo.com/articles/1","quantity":1,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":0.5625,"totalLineAmount":2.8125,"lineItemGroupKey":"Air","travelData":{"bookingReference":"Booking ref 1","travelSegments":[{"segmentType":"Air","departureAirportCode":"IATA:ARN","arrivalAirportCode":"IATA:GOT","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}},{"id":"id:2","articleNumber":"num:2","name":"Train - A to B2","description":"A nice little Train - A to B 2","productUrl":"http://foo.com/articles/2","quantity":2,"unitMeasure":"st","unitAmountExcludingTax":2.25,"taxPercent":25.00,"totalLineTaxAmount":1.1250,"totalLineAmount":5.6250,"lineItemGroupKey":"Rail","travelData":{"bookingReference":"Booking ref 2","travelSegments":[{"segmentType":"Rail","departureStationCode":"ESTOCOLMO CITY","arrivalStationCode":"GBG CITY","departureDate":"2014-05-03","departureTime":"11:35","departureCountryCode":"SWE","arrivalDate":"2014-05-03","arrivalTime":"13:35","arrivalCountryCode":"SWE","carrierDesignator":"UIC:1174","tickets":[{"serviceId":"SK1427","ticketNumber":"2xgfrt5","isRefundable":true,"isRebookable":true,"passenger":{"name":{"title":"Mr.","firstName":"John","middleNames":"Doe","lastName":"Testsson","suffix":"Sr."},"telephone":"+46 000 000 00","emailAddress":"none@foo.com"}}]}]}}]}</value>
+  </data>
+  <data name="SimpleAnnulAuth" xml:space="preserve">
+    <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75}</value>
+  </data>
+</root>
