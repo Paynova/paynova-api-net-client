@@ -6,7 +6,7 @@ namespace Paynova.Api.Client.Extensions
 {
     public static class CollectionExtensions
     {
-        public static Dictionary<string, string> ToDictionary(this NameValueCollection data)
+        public static IDictionary<string, string> ToDictionary(this NameValueCollection data)
         {
             return data.AllKeys
                 .Select(key => new KeyValuePair<string, string>(key, data.Get(key)))
