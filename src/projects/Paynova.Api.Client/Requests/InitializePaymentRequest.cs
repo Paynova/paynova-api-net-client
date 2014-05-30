@@ -7,7 +7,7 @@ namespace Paynova.Api.Client.Requests
 {
     /// <summary>
     /// Represents the request used to create a payment Session within Paynova's system.
-    /// <![CDATA[http://docs.paynova.com/display/API/Initialize+Payment#InitializePayment-RequestParameters]]>
+    /// <![CDATA[http://docs.paynova.com]]>
     /// </summary>
     public class InitializePaymentRequest : Request
     {

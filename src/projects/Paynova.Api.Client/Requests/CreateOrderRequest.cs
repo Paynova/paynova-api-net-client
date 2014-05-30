@@ -7,7 +7,7 @@ namespace Paynova.Api.Client.Requests
 {
     /// <summary>
     /// Represents the request used to create an order within Paynova's system.
-    /// <![CDATA[http://docs.paynova.com/display/API/Create+Order#CreateOrder-RequestParameters]]>
+    /// <![CDATA[http://docs.paynova.com]]>
     /// </summary>
     public class CreateOrderRequest : Request
     {

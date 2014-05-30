@@ -4,7 +4,7 @@ namespace Paynova.Api.Client.Model
 {
     /// <summary>
     ///  Currency code entity. Should follow ISO 4217.
-    /// <![CDATA[http://docs.paynova.com/display/API/Currency+Codes]]>
+    /// <![CDATA[http://docs.paynova.com]]>
     /// </summary>
     public class CurrencyCode
     {

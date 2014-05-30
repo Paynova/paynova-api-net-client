@@ -47,7 +47,7 @@ namespace Paynova.Api.Client
 
         /// <summary>
         /// Used to create an order within Paynova's system.
-        /// <![CDATA[http://docs.paynova.com/display/API/Create+Order]]>
+        /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -55,7 +55,7 @@ namespace Paynova.Api.Client
 
         /// <summary>
         /// Used to create a payment Session within Paynova's system
-        /// <![CDATA[http://docs.paynova.com/display/API/Initialize+Payment]]>
+        /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -63,7 +63,7 @@ namespace Paynova.Api.Client
 
         /// <summary>
         /// Used to used to refund a Payment within Paynova's system
-        /// <![CDATA[http://docs.paynova.com/display/API/Refund+Payment]]>
+        /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -71,7 +71,7 @@ namespace Paynova.Api.Client
 
         /// <summary>
         /// Finalize all or part of an authorization.
-        /// <![CDATA[http://docs.paynova.com/display/API/Finalize+Authorization]]>
+        /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace Paynova.Api.Client
 
         /// <summary>
         /// Annul all or part of an authorization.
-        /// <![CDATA[http://docs.paynova.com/display/API/Annul+Authorization]]>
+        /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         void AnnulAuthorization(AnnulAuthorizationRequest request);

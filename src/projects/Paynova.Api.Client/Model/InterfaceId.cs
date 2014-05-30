@@ -43,7 +43,7 @@ namespace Paynova.Api.Client.Model
 
         /// <summary>
         /// Hosted Areo interface.
-        /// <![CDATA[http://docs.paynova.com/display/AERO/Home]]>
+        /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <returns></returns>
         public static InterfaceId Aero
