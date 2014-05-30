@@ -7,6 +7,7 @@ namespace Paynova.Api.Client.UnitTests.Security
 {
     public class PostbackDigestTests : UnitTestsOf<PostbackDigest>
     {
+        protected const string CorrectDigestForOnePayment = "6645208808A61B72182CD0A2119B44AC54D1D344";
         public PostbackDigestTests()
         {
             SUT = new PostbackDigest("SECRET_KEYSECRET");
@@ -29,7 +30,7 @@ namespace Paynova.Api.Client.UnitTests.Security
 
             var digest = SUT.Calculate(data);
 
-            digest.Should().Be("6645208808A61B72182CD0A2119B44AC54D1D344");
+            digest.Should().Be(CorrectDigestForOnePayment);
         }
 
         [MyFact]
@@ -56,6 +57,96 @@ namespace Paynova.Api.Client.UnitTests.Security
             var digest = SUT.Calculate(data);
 
             digest.Should().Be("94E37F5EDF86B734DA198D5EC01350FF0949E636");
+        }
+
+        [MyFact]
+        public void When_one_payment_attempt_It_should_validate_to_true()
+        {
+            var data = new NameValueCollection
+            {
+                {"ORDER_ID", "a148910e-226f-43e6-8f72-a33900e2214c"},
+                {"SESSION_ID", "775e3b3b-ff40-4078-bdee-a33900e22164"},
+                {"ORDER_NUMBER", "7e2e7e8cf17640e5b9da6887eea0860a"},
+                {"SESSION_STATUS", "Completed"},
+                {"CURRENCY_CODE", "SEK"},
+                {"PAYMENT_1_STATUS", "Completed"},
+                {"PAYMENT_1_TRANSACTION_ID", "201405281543270574"},
+                {"PAYMENT_1_AMOUNT", "100.00"},
+                {"DIGEST", CorrectDigestForOnePayment}
+            };
+
+            var isValid = SUT.Validate(data);
+
+            isValid.Should().BeTrue();
+        }
+
+        [MyFact]
+        public void When_one_payment_attempt_It_should_validate_to_true_and_return_the_digest()
+        {
+            var data = new NameValueCollection
+            {
+                {"ORDER_ID", "a148910e-226f-43e6-8f72-a33900e2214c"},
+                {"SESSION_ID", "775e3b3b-ff40-4078-bdee-a33900e22164"},
+                {"ORDER_NUMBER", "7e2e7e8cf17640e5b9da6887eea0860a"},
+                {"SESSION_STATUS", "Completed"},
+                {"CURRENCY_CODE", "SEK"},
+                {"PAYMENT_1_STATUS", "Completed"},
+                {"PAYMENT_1_TRANSACTION_ID", "201405281543270574"},
+                {"PAYMENT_1_AMOUNT", "100.00"},
+                {"DIGEST", CorrectDigestForOnePayment}
+            };
+
+            string calculatedDigest;
+            var isValid = SUT.TryValidate(data, out calculatedDigest);
+
+            isValid.Should().BeTrue();
+            calculatedDigest.Should().Be(CorrectDigestForOnePayment);
+        }
+
+        [MyFact]
+        public void When_wrong_data_It_should_validate_to_false()
+        {
+            var data = new NameValueCollection
+            {
+                {"ORDER_ID", "a148910e-226f-43e6-8f72-a33900e2214c"},
+                {"SESSION_ID", "775e3b3b-ff40-4078-bdee-a33900e22164"},
+                {"ORDER_NUMBER", "7e2e7e8cf17640e5b9da6887eea0860a"},
+                {"SESSION_STATUS", "Completed"},
+                {"CURRENCY_CODE", "SEK"},
+                {"PAYMENT_1_STATUS", "Completed"},
+                {"PAYMENT_1_TRANSACTION_ID", "201405281543270574"},
+                {"PAYMENT_1_AMOUNT", "100.00"},
+                {"DIGEST", "Some fake digest sent from Paynova"}
+            };
+
+            var isValid = SUT.Validate(data);
+
+            isValid.Should().BeFalse();
+        }
+
+        [MyFact]
+        public void When_wrong_data_It_should_validate_to_false_and_return_the_digest()
+        {
+            const string fakeDigest = "Some fake digest sent from Paynova";
+            var data = new NameValueCollection
+            {
+                {"ORDER_ID", "a148910e-226f-43e6-8f72-a33900e2214c"},
+                {"SESSION_ID", "775e3b3b-ff40-4078-bdee-a33900e22164"},
+                {"ORDER_NUMBER", "7e2e7e8cf17640e5b9da6887eea0860a"},
+                {"SESSION_STATUS", "Completed"},
+                {"CURRENCY_CODE", "SEK"},
+                {"PAYMENT_1_STATUS", "Completed"},
+                {"PAYMENT_1_TRANSACTION_ID", "201405281543270574"},
+                {"PAYMENT_1_AMOUNT", "100.00"},
+                {"DIGEST", fakeDigest}
+            };
+
+            string calculatedDigest;
+            var isValid = SUT.TryValidate(data, out calculatedDigest);
+
+            isValid.Should().BeFalse();
+            calculatedDigest.Should().NotBe(fakeDigest);
+            calculatedDigest.Should().Be(CorrectDigestForOnePayment);
         }
     }
 }

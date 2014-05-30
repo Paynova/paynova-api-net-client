@@ -81,6 +81,7 @@
     <Compile Include="Requests\CreateOrderRequestTests.cs" />
     <Compile Include="Requests\RefundPaymentRequestTests.cs" />
     <Compile Include="Responses\GenericResponseFactoryTests.cs" />
+    <Compile Include="Security\EhnHeaderDigestTests.cs" />
     <Compile Include="Security\PostbackDigestTests.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="UnitTestsOf.cs" />

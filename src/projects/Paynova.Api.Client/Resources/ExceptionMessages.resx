@@ -123,6 +123,9 @@
   <data name="BasicHttpConnection_MissingBasicCredentials" xml:space="preserve">
     <value>Server address must contain url encoded basic credentials</value>
   </data>
+  <data name="DigestValidation_MissingOriginalDigest" xml:space="preserve">
+    <value>The sent data does not seem to contain a digest</value>
+  </data>
   <data name="PaynovaSdkException_WhileCreatingResponse" xml:space="preserve">
     <value>An exception occurred while trying to create response: '{0}'. Description: '{1}'.</value>
   </data>
