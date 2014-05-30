@@ -9,7 +9,7 @@ namespace Paynova.Api.Client.UnitTests.Security
     {
         public PostbackDigestTests()
         {
-            SUT = new PostbackDigest();
+            SUT = new PostbackDigest("SECRET_KEYSECRET");
         }
 
         [MyFact]
@@ -27,7 +27,7 @@ namespace Paynova.Api.Client.UnitTests.Security
                 {"PAYMENT_1_AMOUNT", "100.00"},
             };
 
-            var digest = SUT.Calculate(data, "SECRET_KEYSECRET");
+            var digest = SUT.Calculate(data);
 
             digest.Should().Be("6645208808A61B72182CD0A2119B44AC54D1D344");
         }
@@ -53,7 +53,7 @@ namespace Paynova.Api.Client.UnitTests.Security
                 {"PAYMENT_3_AMOUNT", "100.00"},
             };
 
-            var digest = SUT.Calculate(data, "SECRET_KEYSECRET");
+            var digest = SUT.Calculate(data);
 
             digest.Should().Be("94E37F5EDF86B734DA198D5EC01350FF0949E636");
         }

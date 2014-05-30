@@ -40,8 +40,8 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DateTimeProvider.cs" />
-    <Compile Include="Security\CallbackDigest.cs" />
-    <Compile Include="Security\Digest.cs" />
+    <Compile Include="Security\EhnDigest.cs" />
+    <Compile Include="Security\DigestBase.cs" />
     <Compile Include="EnsureThat\CustomMessageExtensions.cs" />
     <Compile Include="EnsureThat\Ensure.cs" />
     <Compile Include="EnsureThat\EnsureBoolExtensions.cs" />
@@ -147,6 +147,8 @@
     <Compile Include="Model\InvalidStatus.cs" />
     <Compile Include="Model\SuccessfulStatus.cs" />
     <Compile Include="Runtime.cs" />
+    <Compile Include="Security\EhnHeaderDigest.cs" />
+    <Compile Include="Security\KeyValueBasedDigest.cs" />
     <Compile Include="Security\Payment.cs" />
     <Compile Include="Security\PostbackDigest.cs" />
     <Compile Include="Serialization\CustomSerializerStrategy.cs" />

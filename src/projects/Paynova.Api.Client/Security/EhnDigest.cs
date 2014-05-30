@@ -3,9 +3,13 @@ using System.Text;
 
 namespace Paynova.Api.Client.Security
 {
-    public class CallbackDigest : Digest
+    public class EhnDigest : KeyValueBasedDigest
     {
-        protected override string GetRawString(string secretKey, Dictionary<string, string> keyValues)
+        public EhnDigest(string secretKey) : base(secretKey)
+        {
+        }
+
+        protected override string BuildRawStringForCalculation(string secretKey, IDictionary<string, string> keyValues)
         {
             var rawData = new StringBuilder();
 
@@ -15,7 +19,7 @@ namespace Paynova.Api.Client.Security
             AppendIfKeyHasValue("MERCHANT_ID", keyValues, rawData);
             AppendIfValueExists(secretKey, rawData);
 
-            return rawData.ToString().TrimEnd(new[] { ';' });
+            return rawData.ToString();
         }
     }
 }
