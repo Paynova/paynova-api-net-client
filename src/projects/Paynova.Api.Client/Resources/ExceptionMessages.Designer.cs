@@ -79,6 +79,15 @@ namespace Paynova.Api.Client.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The sent data does not seem to contain a digest.
+        /// </summary>
+        public static string DigestValidation_MissingOriginalDigest {
+            get {
+                return ResourceManager.GetString("DigestValidation_MissingOriginalDigest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An exception occurred while trying to create response: &apos;{0}&apos;. Description: &apos;{1}&apos;..
         /// </summary>
         public static string PaynovaSdkException_WhileCreatingResponse {

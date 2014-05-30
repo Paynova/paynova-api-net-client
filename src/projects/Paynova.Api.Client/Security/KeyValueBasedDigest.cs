@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Paynova.Api.Client.EnsureThat;
 using Paynova.Api.Client.Extensions;
+using Paynova.Api.Client.Resources;
 
 namespace Paynova.Api.Client.Security
 {
@@ -13,6 +15,36 @@ namespace Paynova.Api.Client.Security
 
         protected KeyValueBasedDigest(string secretKey) : base(secretKey)
         {
+        }
+
+        public virtual bool Validate(NameValueCollection data)
+        {
+            return Validate(data.ToDictionary());
+        }
+
+        public virtual bool Validate(IDictionary<string, string> data)
+        {
+            string calculatedDigest;
+
+            return TryValidate(data, out calculatedDigest);
+        }
+
+        public virtual bool TryValidate(NameValueCollection data, out string calculatedDigest)
+        {
+            return TryValidate(data.ToDictionary(), out calculatedDigest);
+        }
+
+        public virtual bool TryValidate(IDictionary<string, string> data, out string calculatedDigest)
+        {
+            Ensure.That(data, "data").IsNotNull();
+            Ensure.That(data.ContainsKey("DIGEST"), "data")
+                .WithExtraMessageOf(() => ExceptionMessages.DigestValidation_MissingOriginalDigest)
+                .IsTrue();
+
+            var originalDigest = data["DIGEST"];
+            calculatedDigest = Calculate(data);
+
+            return originalDigest.Equals(calculatedDigest, StringComparison.Ordinal);
         }
 
         public virtual string Calculate(NameValueCollection data)
