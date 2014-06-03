@@ -11,7 +11,10 @@ namespace Paynova.Api.Client.Testing.TestData
             const decimal fakeUnitAmountExcludingTax = 2.25m;
             const decimal fakeTaxPercent = 0.25m;
 
-            return new LineItem("id:" + n, "num:" + n, articleName + n, "st", fakeTaxPercent, n, fakeUnitAmountExcludingTax)
+            var totalLineAmount = (fakeUnitAmountExcludingTax * n) * (1 + fakeTaxPercent);
+            var totalLineTaxAmount = (fakeUnitAmountExcludingTax * n) * fakeTaxPercent;
+
+            return new LineItem("id:" + n, "num:" + n, articleName + n, "st", fakeTaxPercent, n, fakeUnitAmountExcludingTax, totalLineAmount, totalLineTaxAmount)
             {
                 Description = "A nice little " + articleName + " " + n,
                 ProductUrl = "http://foo.com/articles/" + n,
