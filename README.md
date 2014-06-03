@@ -56,4 +56,4 @@ All tests are written using [xUnit](https://github.com/xunit/xunit) and uses [Fl
 **Note!** `TestServer`is not built by default. It's a help project (NancyFx web server) that you can spin up as a web server and use as an endpoint for callbacks form Paynova's API's. Look in the `App.Config` to see what it listens on. An example enpoint is: `http:\\localhost:8091\echo` accepting `POSTs`. The [Nancy Diagnostics](https://github.com/NancyFx/Nancy/wiki/Diagnostics) is also enabled, so you can visit: `http:\\localhost:8091\_nancy` and sign in with `test` (controlled via `App.Config`).
 
 ## License ##
-For more information about the license, look in the [LICENSE.md](https://github.com/paynova/paynova-api-net-client/blob/master/license.md) file
+For more information about the license, look in the [LICENSE.md](https://github.com/Paynova/paynova-api-net-client/blob/master/LICENSE.md) file
