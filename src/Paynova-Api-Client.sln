@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paynova.Api.Client", "projects\Paynova.Api.Client\Paynova.Api.Client.csproj", "{376172FE-FB48-4945-A720-4C6E6305865F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{763C0980-1744-4096-9C2B-5E783754BB8C}"
+	ProjectSection(SolutionItems) = preProject
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paynova.Api.Client.UnitTests", "tests\Paynova.Api.Client.UnitTests\Paynova.Api.Client.UnitTests.csproj", "{20294118-5EDA-4666-9AB9-9F51A06ACD84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{56926E0C-A5B9-424C-9E0B-E2BE8899DBF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paynova.Api.Client.IntegrationTests", "tests\Paynova.Api.Client.IntegrationTests\Paynova.Api.Client.IntegrationTests.csproj", "{C5C802F8-323F-4325-AACA-AA5552BC6C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paynova.Api.Client.Testing", "tests\Paynova.Api.Client.Testing\Paynova.Api.Client.Testing.csproj", "{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServer", "tests\TestServer\TestServer.csproj", "{0F4C0BE6-1E0C-4031-9EC5-D50C2C748740}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{376172FE-FB48-4945-A720-4C6E6305865F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{376172FE-FB48-4945-A720-4C6E6305865F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{376172FE-FB48-4945-A720-4C6E6305865F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{376172FE-FB48-4945-A720-4C6E6305865F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20294118-5EDA-4666-9AB9-9F51A06ACD84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20294118-5EDA-4666-9AB9-9F51A06ACD84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20294118-5EDA-4666-9AB9-9F51A06ACD84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20294118-5EDA-4666-9AB9-9F51A06ACD84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C802F8-323F-4325-AACA-AA5552BC6C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C802F8-323F-4325-AACA-AA5552BC6C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C802F8-323F-4325-AACA-AA5552BC6C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C802F8-323F-4325-AACA-AA5552BC6C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4C0BE6-1E0C-4031-9EC5-D50C2C748740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4C0BE6-1E0C-4031-9EC5-D50C2C748740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20294118-5EDA-4666-9AB9-9F51A06ACD84} = {56926E0C-A5B9-424C-9E0B-E2BE8899DBF6}
+		{C5C802F8-323F-4325-AACA-AA5552BC6C19} = {56926E0C-A5B9-424C-9E0B-E2BE8899DBF6}
+		{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7} = {56926E0C-A5B9-424C-9E0B-E2BE8899DBF6}
+		{0F4C0BE6-1E0C-4031-9EC5-D50C2C748740} = {56926E0C-A5B9-424C-9E0B-E2BE8899DBF6}
+	EndGlobalSection
+EndGlobal
