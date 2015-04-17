@@ -46,7 +46,7 @@ namespace Paynova.Api.Client
         CreateOrderResponse CreateOrder(string orderNumber, CurrencyCode currencyCode, decimal totalAmount);
 
         /// <summary>
-        /// Used to create an order within Paynova's system.
+        /// Used to create an order within Paynovas system.
         /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
@@ -54,7 +54,7 @@ namespace Paynova.Api.Client
         CreateOrderResponse CreateOrder(CreateOrderRequest request);
 
         /// <summary>
-        /// Used to create a payment Session within Paynova's system
+        /// Used to create a payment Session within Paynovas system
         /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
@@ -62,12 +62,20 @@ namespace Paynova.Api.Client
         InitializePaymentResponse InitializePayment(InitializePaymentRequest request);
 
         /// <summary>
-        /// Used to used to refund a Payment within Paynova's system
+        /// Used to used to refund a Payment within Paynovas system
         /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         RefundPaymentResponse RefundPayment(RefundPaymentRequest request);
+
+        /// <summary>
+        /// Used to authorize an invoice payment, instead of using pay-page.
+        /// The next step would be to Finalize it using <see cref="FinalizeAuthorization"/>.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        AuthorizeInvoiceResponse AuthorizeInvoice(AuthorizeInvoiceRequest request);
 
         /// <summary>
         /// Finalize all or part of an authorization.
@@ -119,7 +127,7 @@ namespace Paynova.Api.Client
         /// Your unique identifier for the customer profile stored at Paynova
         /// </param>
         /// <param name="cardId">
-        /// Paynova's GUID identifier for the card associated with the customer profile
+        /// Paynovas GUID identifier for the card associated with the customer profile
         /// </param>
         void RemoveCustomerProfileCard(string profileId, Guid cardId);
 

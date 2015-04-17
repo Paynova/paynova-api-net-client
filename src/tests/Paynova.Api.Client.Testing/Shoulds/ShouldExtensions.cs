@@ -19,6 +19,12 @@ namespace Paynova.Api.Client.Testing.Shoulds
         }
 
         [DebuggerStepThrough]
+        public static AuthorizeInvoiceResponseShouldBe ShouldBe(this AuthorizeInvoiceResponse response)
+        {
+            return new AuthorizeInvoiceResponseShouldBe(response);
+        }
+
+        [DebuggerStepThrough]
         public static InitializePaymentResponseShouldBe ShouldBe(this InitializePaymentResponse response)
         {
             return new InitializePaymentResponseShouldBe(response);

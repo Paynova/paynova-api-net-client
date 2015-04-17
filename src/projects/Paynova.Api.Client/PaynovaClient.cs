@@ -15,6 +15,7 @@ namespace Paynova.Api.Client
         public ISerializer Serializer { get; private set; }
 
         protected IHttpRequestFactory<CreateOrderRequest> CreateOrderHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<AuthorizeInvoiceRequest> AuthorizeInvoiceHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<InitializePaymentRequest> InitializePaymentHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RefundPaymentRequest> RefundPaymentHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<FinalizeAuthorizationRequest> FinalizeAuthorizationHttpRequestFactory { get; private set; }
@@ -38,6 +39,7 @@ namespace Paynova.Api.Client
             Serializer = new DefaultJsonSerializer();
 
             CreateOrderHttpRequestFactory = new CreateOrderHttpRequestFactory(Runtime.Instance, Serializer);
+            AuthorizeInvoiceHttpRequestFactory = new AuthorizeInvoiceHttpRequestFactory(Runtime.Instance, Serializer);
             InitializePaymentHttpRequestFactory = new InitializePaymentHttpRequestFactory(Runtime.Instance, Serializer);
             RefundPaymentHttpRequestFactory = new RefundPaymentHttpRequestFactory(Runtime.Instance, Serializer);
             FinalizeAuthorizationHttpRequestFactory = new FinalizeAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
@@ -87,6 +89,16 @@ namespace Paynova.Api.Client
             var httpResponse = Connection.Send(httpRequest);
 
             return ProcessRefundPaymentHttpResponse(httpResponse);
+        }
+
+        public virtual AuthorizeInvoiceResponse AuthorizeInvoice(AuthorizeInvoiceRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+
+            var httpRequest = CreateHttpRequest(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ProcessAuthorizeInvoiceHttpResponse(httpResponse);
         }
 
         public virtual FinalizeAuthorizationResponse FinalizeAuthorization(FinalizeAuthorizationRequest request)
@@ -159,6 +171,11 @@ namespace Paynova.Api.Client
             return CreateOrderHttpRequestFactory.Create(request);
         }
 
+        protected virtual HttpRequest CreateHttpRequest(AuthorizeInvoiceRequest request)
+        {
+            return AuthorizeInvoiceHttpRequestFactory.Create(request);
+        }
+
         protected virtual HttpRequest CreateHttpRequest(InitializePaymentRequest request)
         {
             return InitializePaymentHttpRequestFactory.Create(request);
@@ -197,6 +214,11 @@ namespace Paynova.Api.Client
         protected virtual CreateOrderResponse ProcessCreateOrderHttpResponse(HttpResponse httpResponse)
         {
             return ResponseFactory.Create<CreateOrderResponse>(httpResponse);
+        }
+
+        protected virtual AuthorizeInvoiceResponse ProcessAuthorizeInvoiceHttpResponse(HttpResponse httpResponse)
+        {
+            return ResponseFactory.Create<AuthorizeInvoiceResponse>(httpResponse);
         }
 
         protected virtual InitializePaymentResponse ProcessInitializePaymentHttpResponse(HttpResponse httpResponse)

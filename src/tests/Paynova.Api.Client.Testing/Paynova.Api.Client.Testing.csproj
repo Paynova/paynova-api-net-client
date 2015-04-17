@@ -51,6 +51,7 @@
     <Compile Include="PrioritizedFixtureAttribute.cs" />
     <Compile Include="PrioritizedFixtureClassCommand.cs" />
     <Compile Include="Shoulds\AnnulAuthorizationResponseShouldBe.cs" />
+    <Compile Include="Shoulds\AuthorizeInvoiceResponseShouldBe.cs" />
     <Compile Include="Shoulds\FinalizeAuthorizationResponseShouldBe.cs" />
     <Compile Include="Shoulds\GetCustomerProfileResponseShouldBe.cs" />
     <Compile Include="Shoulds\InitializePaymentResponseShouldBe.cs" />

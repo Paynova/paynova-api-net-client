@@ -155,5 +155,11 @@ namespace Paynova.Api.Client.UnitTests.Model
         {
             PaymentMethod.Überweisung.Id.Should().Be(118);
         }
+
+        [MyFact]
+        public void When_PaynovaInvoice_It_should_have_311()
+        {
+            PaymentMethod.PaynovaInvoice.Id.Should().Be(311);
+        }
     }
 }

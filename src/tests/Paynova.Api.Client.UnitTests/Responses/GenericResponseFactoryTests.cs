@@ -64,6 +64,24 @@ namespace Paynova.Api.Client.UnitTests.Responses
         }
 
         [MyFact]
+        public void When_successful_authorize_invoice_response_content_It_creates_the_response()
+        {
+            var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
+            {
+                Content = "{\"status\": {\"isSuccess\": true,\"errorNumber\": 0,\"statusKey\": \"SUCCESS\","
+                          + "\"statusMessage\": \"The operation was successful.\"},"
+                          + "\"orderId\": \"6834c731-908f-4013-8335-a47d006c7c58\","
+                          + "\"transactionId\": \"201504170836062270\","
+                          + "\"acquirerId\": 1045,"
+                          + "\"acquirerReferenceId\": \"10197\"}"
+            };
+
+            var response = SUT.Create<AuthorizeInvoiceResponse>(httpResponse);
+
+            response.ShouldBe().Ok();
+        }
+
+        [MyFact]
         public void When_successful_initialize_payment_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")

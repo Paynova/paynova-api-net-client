@@ -46,6 +46,7 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="HttpRequestFactories\AuthorizeInvoiceHttpRequestFactoryTests.cs" />
     <Compile Include="Security\EhnDigestTests.cs" />
     <Compile Include="HttpRequestFactories\AnnulAuthorizationtHttpRequestFactoryTests.cs" />
     <Compile Include="HttpRequestFactories\FinalizeAuthorizationHttpRequestFactoryTests.cs" />

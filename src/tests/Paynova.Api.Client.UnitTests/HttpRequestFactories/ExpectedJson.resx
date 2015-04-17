@@ -162,4 +162,7 @@
   <data name="SimpleAnnulAuth" xml:space="preserve">
     <value>{"transactionId":"transaction1","orderId":"7a246c7b-d97f-461d-9da8-e6f710f319a1","totalAmount":12.75}</value>
   </data>
+  <data name="AuthorizeInvoice" xml:space="preserve">
+    <value>{"orderId":"499de2b4-e55e-433b-bf33-fa39efc0ce68","authorizationType":"InvoicePayment","totalAmount":125.50,"paymentMethodId":311,"paymentMethodProductId":"DirectInvoice","paymentChannelId":1}</value>
+  </data>
 </root>

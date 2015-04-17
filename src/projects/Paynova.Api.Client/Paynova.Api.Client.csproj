@@ -40,6 +40,9 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DateTimeProvider.cs" />
+    <Compile Include="HttpRequestFactories\AuthorizeInvoiceHttpRequestFactory.cs" />
+    <Compile Include="Requests\AuthorizeInvoiceRequest.cs" />
+    <Compile Include="Responses\AuthorizeInvoiceResponse.cs" />
     <Compile Include="Security\EhnDigest.cs" />
     <Compile Include="Security\DigestBase.cs" />
     <Compile Include="EnsureThat\CustomMessageExtensions.cs" />
