@@ -41,8 +41,13 @@
     </Compile>
     <Compile Include="DateTimeProvider.cs" />
     <Compile Include="HttpRequestFactories\AuthorizeInvoiceHttpRequestFactory.cs" />
+    <Compile Include="HttpRequestFactories\GetAddressesHttpRequestFactory.cs" />
+    <Compile Include="Model\AddressResult.cs" />
+    <Compile Include="Model\NameAndAddressResult.cs" />
     <Compile Include="Requests\AuthorizeInvoiceRequest.cs" />
+    <Compile Include="Requests\GetAddressesRequest.cs" />
     <Compile Include="Responses\AuthorizeInvoiceResponse.cs" />
+    <Compile Include="Responses\GetAddressesResponse.cs" />
     <Compile Include="Security\EhnDigest.cs" />
     <Compile Include="Security\DigestBase.cs" />
     <Compile Include="EnsureThat\CustomMessageExtensions.cs" />

@@ -20,6 +20,7 @@ namespace Paynova.Api.Client
         protected IHttpRequestFactory<RefundPaymentRequest> RefundPaymentHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<FinalizeAuthorizationRequest> FinalizeAuthorizationHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<AnnulAuthorizationRequest> AnnulAuthorizationHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<GetAddressesRequest> GetAddressesHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<GetCustomerProfileRequest> GetCustomerProfileHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RemoveCustomerProfileCardRequest> RemoveCustomerProfileCardHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RemoveCustomerProfileRequest> RemoveCustomerProfileHttpRequestFactory { get; private set; }
@@ -44,6 +45,7 @@ namespace Paynova.Api.Client
             RefundPaymentHttpRequestFactory = new RefundPaymentHttpRequestFactory(Runtime.Instance, Serializer);
             FinalizeAuthorizationHttpRequestFactory = new FinalizeAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             AnnulAuthorizationHttpRequestFactory = new AnnulAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
+            GetAddressesHttpRequestFactory = new GetAddressesHttpRequestFactory(Runtime.Instance, Serializer);
             GetCustomerProfileHttpRequestFactory = new GetCustomerProfileHttpRequestFactory(Runtime.Instance, Serializer);
             RemoveCustomerProfileCardHttpRequestFactory = new RemoveCustomerProfileCardHttpRequestFactory(Runtime.Instance, Serializer);
             RemoveCustomerProfileHttpRequestFactory = new RemoveCustomerProfileHttpRequestFactory(Runtime.Instance, Serializer);
@@ -119,6 +121,21 @@ namespace Paynova.Api.Client
             var httpResponse = Connection.Send(httpRequest);
 
             ProcessAnnulAuthorizationHttpResponse(httpResponse);
+        }
+
+        public virtual GetAddressesResponse GetAddresses(string countryCode, string governmentId)
+        {
+            return GetAddresses(new GetAddressesRequest(countryCode, governmentId));
+        }
+
+        public virtual GetAddressesResponse GetAddresses(GetAddressesRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+
+            var httpRequest = GetAddressesHttpRequestFactory.Create(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ResponseFactory.Create<GetAddressesResponse>(httpResponse);
         }
 
         public virtual GetCustomerProfileResponse GetCustomerProfile(string profileId)

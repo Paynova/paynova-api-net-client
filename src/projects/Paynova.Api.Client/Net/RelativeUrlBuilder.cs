@@ -49,9 +49,11 @@ namespace Paynova.Api.Client.Net
             public static Keys Instance { get; private set; }
             public string OrderId { get { return "orderId"; } }
             public string OrderNumber { get { return "orderNumber"; } }
+            public string GovernmentId { get { return "governmentId"; } }
             public string ProfileId { get { return "profileId"; } }
             public string CardId { get { return "cardId"; } }
             public string TransactionId { get { return "transactionId"; } }
+            public string CountryCode { get { return "countryCode"; } }
             public string CurrencyCode { get { return "currencyCode"; } }
             public string TotalAmount { get { return "totalAmount"; } }
 

@@ -93,6 +93,21 @@ namespace Paynova.Api.Client
         void AnnulAuthorization(AnnulAuthorizationRequest request);
 
         /// <summary>
+        ///  Used to lookup addresses for a customer.
+        /// </summary>
+        /// <param name="countryCode"></param>
+        /// /// <param name="governmentId"></param>
+        /// <returns></returns>
+        GetAddressesResponse GetAddresses(string countryCode, string governmentId);
+
+        /// <summary>
+        ///  Used to lookup addresses for a customer.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        GetAddressesResponse GetAddresses(GetAddressesRequest request);
+
+        /// <summary>
         ///  Used to retrieve information about a merchant customer profile stored at Paynova.
         /// </summary>
         /// <param name="profileId">

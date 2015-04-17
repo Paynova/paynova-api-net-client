@@ -49,6 +49,12 @@ namespace Paynova.Api.Client.Testing.Shoulds
         }
 
         [DebuggerStepThrough]
+        public static GetAddressesResponseShouldBe ShouldBe(this GetAddressesResponse response)
+        {
+            return new GetAddressesResponseShouldBe(response);
+        }
+
+        [DebuggerStepThrough]
         public static GetCustomerProfileResponseShouldBe ShouldBe(this GetCustomerProfileResponse response)
         {
             return new GetCustomerProfileResponseShouldBe(response);

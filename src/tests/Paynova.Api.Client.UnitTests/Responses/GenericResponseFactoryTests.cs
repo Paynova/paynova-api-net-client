@@ -29,10 +29,12 @@ namespace Paynova.Api.Client.UnitTests.Responses
             };
 
             VerifyException<CreateOrderResponse>(httpResponse);
+            VerifyException<AuthorizeInvoiceResponse>(httpResponse);
             VerifyException<InitializePaymentResponse>(httpResponse);
             VerifyException<RefundPaymentResponse>(httpResponse);
             VerifyException<FinalizeAuthorizationResponse>(httpResponse);
             VerifyException<AnnulAuthorizationResponse>(httpResponse);
+            VerifyException<GetAddressesResponse>(httpResponse);
             VerifyException<GetCustomerProfileResponse>(httpResponse);
             VerifyException<RemoveCustomerProfileCardResponse>(httpResponse);
             VerifyException<RemoveCustomerProfileResponse>(httpResponse);
@@ -147,6 +149,38 @@ namespace Paynova.Api.Client.UnitTests.Responses
             };
 
             var response = SUT.Create<AnnulAuthorizationResponse>(httpResponse);
+
+            response.ShouldBe().Ok();
+        }
+
+        [MyFact]
+        public void When_successful_get_addresses_response_content_It_creates_the_response()
+        {
+            var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Get, HttpStatusCode.OK, "Ok.")
+            {
+                Content = "{" +
+                        "    \"status\": {" +
+                        "        \"isSuccess\": true," +
+                        "        \"errorNumber\": 0," +
+                        "        \"statusKey\": \"SUCCESS\"," +
+                        "        \"statusMessage\": \"The operation was successful.\"" +
+                        "    }," +
+                        "    \"governmentId\": \"198005039212\"," +
+                        "    \"countryCode\": \"SE\"," +
+                        "    \"addresses\": [{" +
+                        "        \"name\":{" +
+                        "            \"firstName\": \"Tester\"," +
+                        "            \"lastName\": \"Joe\"," +
+                        "        }," +
+                        "        \"address\":{" +
+                        "            \"type\": \"Legal\"," +
+                        "            \"street1\": \"Some street 1\"," +
+                        "        }" +
+                        "    }]" +
+                        "}"
+            };
+
+            var response = SUT.Create<GetAddressesResponse>(httpResponse);
 
             response.ShouldBe().Ok();
         }
