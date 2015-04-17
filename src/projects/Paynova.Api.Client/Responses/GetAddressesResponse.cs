@@ -6,6 +6,6 @@ namespace Paynova.Api.Client.Responses
     {
         public string GovernmentId { get; set; }
         public string CountryCode { get; set; }
-        public NameAndAddressResult[] Addresses { get; set; }
+        public NameAndAddress[] Addresses { get; set; }
     }
 }
