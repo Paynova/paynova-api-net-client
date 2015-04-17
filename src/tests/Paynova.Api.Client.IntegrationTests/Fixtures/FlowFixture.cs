@@ -15,7 +15,8 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
         private readonly Lazy<CreateOrderRequest> _createOrderRequest;
         private readonly Lazy<AuthorizeInvoiceRequest> _authorizeInvoiceRequest;
         private readonly Lazy<InitializePaymentRequest> _initializePaymentRequest;
-        private readonly Lazy<FinalizeAuthorizationRequest> _finalizeAuthorizationRequest; 
+        private readonly Lazy<FinalizeAuthorizationRequest> _finalizeAuthorizationRequest;
+        private readonly Lazy<AnnulAuthorizationRequest> _annulAuthorizationRequest;
 
         public string OrderNumber { get; private set; }
         public GetAddressesRequest GetAddressesRequest { get { return _getAddressesRequest.Instance; } }
@@ -23,6 +24,7 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
         public AuthorizeInvoiceRequest AuthorizeInvoiceRequest { get { return _authorizeInvoiceRequest.Instance; } }
         public InitializePaymentRequest InitializePaymentRequest { get { return _initializePaymentRequest.Instance; } }
         public FinalizeAuthorizationRequest FinalizeAuthorizationRequest { get { return _finalizeAuthorizationRequest.Instance; } }
+        public AnnulAuthorizationRequest AnnulAuthorizationRequest { get { return _annulAuthorizationRequest.Instance; } }
 
         public GetAddressesResponse GetAddressesResponse { get; set; }
         public CreateOrderResponse CreateOrderResponse { get; set; }
@@ -38,6 +40,7 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
             _authorizeInvoiceRequest = new Lazy<AuthorizeInvoiceRequest>(InitAuthorizeInvoiceRequest);
             _initializePaymentRequest = new Lazy<InitializePaymentRequest>(InitInitializePaymentRequest);
             _finalizeAuthorizationRequest = new Lazy<FinalizeAuthorizationRequest>(InitFinalizeAuthorizationRequest);
+            _annulAuthorizationRequest = new Lazy<AnnulAuthorizationRequest>(InitAnnulAuthorizationRequest);
         }
 
         public void Reset()
@@ -47,6 +50,7 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
             _authorizeInvoiceRequest.Reset();
             _initializePaymentRequest.Reset();
             _finalizeAuthorizationRequest.Reset();
+            _annulAuthorizationRequest.Reset();
         }
 
         protected virtual GetAddressesRequest InitGetAddressesRequest()
@@ -122,6 +126,11 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
         protected virtual FinalizeAuthorizationRequest InitFinalizeAuthorizationRequest()
         {
             return new FinalizeAuthorizationRequest(AuthorizeInvoiceResponse.TransactionId, AuthorizeInvoiceRequest.OrderId, AuthorizeInvoiceRequest.TotalAmount);
+        }
+
+        protected virtual AnnulAuthorizationRequest InitAnnulAuthorizationRequest()
+        {
+            return new AnnulAuthorizationRequest(AuthorizeInvoiceResponse.TransactionId, AuthorizeInvoiceRequest.OrderId, AuthorizeInvoiceRequest.TotalAmount);
         }
     }
 }
