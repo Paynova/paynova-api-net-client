@@ -22,7 +22,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             var httpRequest = SUT.Create(createOrderRequest);
 
             httpRequest.ShouldBe().PostAgainst(
-                "orders/create/{0}/{1}/{2}",
+                "/orders/create/{0}/{1}/{2}",
                 createOrderRequest.OrderNumber,
                 createOrderRequest.TotalAmount.ToString(Runtime.NumberFormatProvider),
                 createOrderRequest.CurrencyCode);
@@ -36,7 +36,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             var httpRequest = SUT.Create(createOrderRequest);
 
             httpRequest.ShouldBe().PostAgainst(
-                "orders/create/{0}/{1}/{2}",
+                "/orders/create/{0}/{1}/{2}",
                 createOrderRequest.OrderNumber,
                 createOrderRequest.TotalAmount.ToString(Runtime.NumberFormatProvider),
                 createOrderRequest.CurrencyCode);
