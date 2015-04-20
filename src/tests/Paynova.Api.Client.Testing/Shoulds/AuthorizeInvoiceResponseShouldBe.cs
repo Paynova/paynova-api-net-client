@@ -12,7 +12,8 @@ namespace Paynova.Api.Client.Testing.Shoulds
 
         public virtual void Ok(Guid? orderId = null)
         {
-            Item.Should().NotBeNull();
+            Item.ShouldBeSuccessful();
+
             Item.OrderId.Should().NotBeEmpty();
             if (orderId.HasValue)
                 Item.OrderId.Should().Be(orderId.Value);
@@ -20,9 +21,6 @@ namespace Paynova.Api.Client.Testing.Shoulds
             Item.TransactionId.Should().NotBeNullOrWhiteSpace();
             Item.AcquirerId.Should().BeGreaterThan(0);
             Item.AcquirerReferenceId.Should().NotBeNullOrWhiteSpace();
-            Item.Status.Should().NotBeNull();
-            Item.Status.StatusKey.Should().Be("SUCCESS");
-            Item.Status.StatusMessage.Should().Be("The operation was successful.");
         }
     }
 }

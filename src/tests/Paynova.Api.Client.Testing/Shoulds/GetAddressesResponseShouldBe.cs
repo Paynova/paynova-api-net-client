@@ -11,13 +11,13 @@ namespace Paynova.Api.Client.Testing.Shoulds
 
         public virtual void Ok()
         {
-            Item.Should().NotBeNull();
-            Item.Status.Should().NotBeNull();
-            Item.Status.StatusKey.Should().Be("SUCCESS");
-            Item.Status.StatusMessage.Should().Be("The operation was successful.");
+            Item.ShouldBeSuccessful();
+
             Item.GovernmentId.Should().NotBeNullOrWhiteSpace();
             Item.CountryCode.Should().NotBeNullOrWhiteSpace();
 
+            Item.Addresses.Should().NotBeNull();
+            Item.Addresses.Should().NotBeEmpty();
             foreach (var item in Item.Addresses)
             {
                 item.Name.FirstName.Should().NotBeNullOrWhiteSpace();

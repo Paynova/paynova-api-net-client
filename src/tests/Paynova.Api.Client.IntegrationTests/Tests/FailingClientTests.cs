@@ -7,7 +7,7 @@ using Paynova.Api.Client.Testing.Shoulds;
 
 namespace Paynova.Api.Client.IntegrationTests.Tests
 {
-    public class FailingClientTests : IntegrationTests<FailingClientTests.Fixture>
+    public class FailingClientTests : IntegrationTests<FlowFixture>
     {
         public FailingClientTests() : base(TestStateRecycle.PerTest) { }
 
@@ -63,10 +63,6 @@ namespace Paynova.Api.Client.IntegrationTests.Tests
             Action a = () => Client.GetCustomerProfile("1fc895e8e99141ecaf52ebd09f6d4a30");
 
             a.ShouldThrow<PaynovaSdkException>();
-        }
-
-        public class Fixture : FlowFixture
-        {
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Configuration;
 using System.Linq;
 using Paynova.Api.Client.Extensions;
 using Paynova.Api.Client.Model;
@@ -55,7 +54,7 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
 
         protected virtual GetAddressesRequest InitGetAddressesRequest()
         {
-            return new GetAddressesRequest("SE", ConfigurationManager.AppSettings["customer_governmentId"]);
+            return new GetAddressesRequest("SE", IntegrationTestsRuntime.Environment.CustomerGovernmentId);
         }
 
         protected virtual CreateOrderRequest InitCreateOrderRequest()
@@ -90,7 +89,7 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
                 .WithCustomer(c =>
                 {
                     c.GovernmentId = GetAddressesResponse.GovernmentId;
-                    c.EmailAddress = ConfigurationManager.AppSettings["customer_email"];
+                    c.EmailAddress = IntegrationTestsRuntime.Environment.CustomerEmail;
                     c.Name.FirstName = address.Name.FirstName;
                     c.Name.LastName = address.Name.LastName;
                 })

@@ -57,9 +57,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{\"status\":{\"isSuccess\":true,\"errorNumber\":0,\"statusKey\":\"SUCCESS\","
-                        + "\"statusMessage\":\"The operation was successful.\"},"
-                        + "\"orderId\":\"c61d1cd5-3fcd-4484-9eeb-a31c00c26807\"}"
+                Content = CreateSuccessfulJsonResponse("\"orderId\":\"c61d1cd5-3fcd-4484-9eeb-a31c00c26807\"")
             };
 
             var response = SUT.Create<CreateOrderResponse>(httpResponse);
@@ -72,12 +70,11 @@ namespace Paynova.Api.Client.UnitTests.Responses
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{\"status\": {\"isSuccess\": true,\"errorNumber\": 0,\"statusKey\": \"SUCCESS\","
-                          + "\"statusMessage\": \"The operation was successful.\"},"
-                          + "\"orderId\": \"6834c731-908f-4013-8335-a47d006c7c58\","
-                          + "\"transactionId\": \"201504170836062270\","
-                          + "\"acquirerId\": 1045,"
-                          + "\"acquirerReferenceId\": \"10197\"}"
+                Content = CreateSuccessfulJsonResponse(
+                        "\"orderId\": \"6834c731-908f-4013-8335-a47d006c7c58\"," +
+                        "\"transactionId\": \"201504170836062270\"," +
+                        "\"acquirerId\": 1045," +
+                        "\"acquirerReferenceId\": \"10197\"")
             };
 
             var response = SUT.Create<AuthorizeInvoiceResponse>(httpResponse);
@@ -90,10 +87,9 @@ namespace Paynova.Api.Client.UnitTests.Responses
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{\"status\":{\"isSuccess\":true,\"errorNumber\":0,\"statusKey\":\"SUCCESS\","
-                        + "\"statusMessage\":\"The operation was successful.\"},"
-                        + "\"sessionId\":\"b97d3e73-2e83-4fa4-96f7-a31f007a33ea\","
-                        + "\"url\":\"https://08r2paygate.paynova.com/Aero/Payment/2/b97d3e73-2e83-4fa4-96f7-a31f007a33ea\"}"
+                Content = CreateSuccessfulJsonResponse(
+                        "\"sessionId\":\"b97d3e73-2e83-4fa4-96f7-a31f007a33ea\"," +
+                        "\"url\":\"https://08r2paygate.paynova.com/Aero/Payment/2/b97d3e73-2e83-4fa4-96f7-a31f007a33ea\"")
             };
 
             var response = SUT.Create<InitializePaymentResponse>(httpResponse);
@@ -107,13 +103,12 @@ namespace Paynova.Api.Client.UnitTests.Responses
             const decimal totalAmount = 100m;
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{\"status\": {\"isSuccess\": true,\"errorNumber\": 0,\"statusKey\": \"SUCCESS\","
-                          + "\"statusMessage\": \"The operation was successful.\"},"
-                          + "\"totalAmountRefunded\": \"100\","
-                          + "\"canRefundAgain\": false,"
-                          + "\"transactionId\": \"201405051544508102\","
-                          + "\"batchId\": \"125030203046\","
-                          + "\"acquirerId\": \"1010\"}"
+                Content = CreateSuccessfulJsonResponse(
+                        "\"totalAmountRefunded\": \"100\"," +
+                        "\"canRefundAgain\": false," +
+                        "\"transactionId\": \"201405051544508102\"," +
+                        "\"batchId\": \"125030203046\"," +
+                        "\"acquirerId\": \"1010\"")
             };
 
             var response = SUT.Create<RefundPaymentResponse>(httpResponse);
@@ -127,13 +122,12 @@ namespace Paynova.Api.Client.UnitTests.Responses
             const decimal totalAmount = 100m;
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{\"status\": {\"isSuccess\": true,\"errorNumber\": 0,\"statusKey\": \"SUCCESS\","
-                        + "\"statusMessage\": \"The operation was successful.\"},"
-                        + "\"totalAmountFinalized\": \"100\","
-                        + "\"canFinalizeAgain\": false,"
-                        + "\"transactionId\": \"201405051544508102\","
-                        + "\"batchId\": \"125030203046\","
-                        + "\"acquirerId\": \"1010\"}"
+                Content = CreateSuccessfulJsonResponse(
+                        "\"totalAmountFinalized\": \"100\"," +
+                        "\"canFinalizeAgain\": false," +
+                        "\"transactionId\": \"201405051544508102\"," +
+                        "\"batchId\": \"125030203046\"," +
+                        "\"acquirerId\": \"1010\"")
             };
 
             var response = SUT.Create<FinalizeAuthorizationResponse>(httpResponse);
@@ -146,8 +140,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{\"status\": {\"isSuccess\": true,\"errorNumber\": 0,\"statusKey\": \"SUCCESS\","
-                          + "\"statusMessage\": \"The operation was successful.\"}}"
+                Content = CreateSuccessfulJsonResponse()
             };
 
             var response = SUT.Create<AnnulAuthorizationResponse>(httpResponse);
@@ -160,26 +153,19 @@ namespace Paynova.Api.Client.UnitTests.Responses
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Get, HttpStatusCode.OK, "Ok.")
             {
-                Content = "{" +
-                        "    \"status\": {" +
-                        "        \"isSuccess\": true," +
-                        "        \"errorNumber\": 0," +
-                        "        \"statusKey\": \"SUCCESS\"," +
-                        "        \"statusMessage\": \"The operation was successful.\"" +
+                Content = CreateSuccessfulJsonResponse(
+                        "\"governmentId\": \"198005039212\"," +
+                        "\"countryCode\": \"SE\"," +
+                        "\"addresses\": [{" +
+                        "    \"name\":{" +
+                        "        \"firstName\": \"Tester\"," +
+                        "        \"lastName\": \"Joe\"," +
                         "    }," +
-                        "    \"governmentId\": \"198005039212\"," +
-                        "    \"countryCode\": \"SE\"," +
-                        "    \"addresses\": [{" +
-                        "        \"name\":{" +
-                        "            \"firstName\": \"Tester\"," +
-                        "            \"lastName\": \"Joe\"," +
-                        "        }," +
-                        "        \"address\":{" +
-                        "            \"type\": \"Legal\"," +
-                        "            \"street1\": \"Some street 1\"," +
-                        "        }" +
-                        "    }]" +
-                        "}"
+                        "    \"address\":{" +
+                        "        \"type\": \"Legal\"," +
+                        "        \"street1\": \"Some street 1\"," +
+                        "    }" +
+                        "}]")
             };
 
             var response = SUT.Create<GetAddressesResponse>(httpResponse);
