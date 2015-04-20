@@ -27,5 +27,11 @@ namespace Paynova.Api.Client.Testing
             _fn = fn;
             _sync = new object();
         }
+
+        public void Reset()
+        {
+            lock (_sync)
+                _instance = null;
+        }
     }
 }

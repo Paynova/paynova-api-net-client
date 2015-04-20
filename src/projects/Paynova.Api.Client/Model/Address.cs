@@ -3,6 +3,14 @@ namespace Paynova.Api.Client.Model
     public class Address
     {
         /// <summary>
+        /// Gets the type of address.
+        /// </summary>
+        /// <remarks>
+        /// Only applicable when returned by Paynova.
+        /// </remarks>
+        public string Type { get; set; }
+
+        /// <summary>
         /// The street address, line 1.
         /// </summary>
         public string Street1 { get; set; }

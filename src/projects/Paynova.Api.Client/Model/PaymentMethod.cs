@@ -1,8 +1,9 @@
-﻿using Paynova.Api.Client.EnsureThat;
+﻿using System;
+using Paynova.Api.Client.EnsureThat;
 
 namespace Paynova.Api.Client.Model
 {
-    public class PaymentMethod
+    public class PaymentMethod : IEquatable<PaymentMethod>
     {
         public int Id { get; private set; }
 
@@ -11,6 +12,23 @@ namespace Paynova.Api.Client.Model
             Ensure.That(id, "id").IsGte(0);
 
             Id = id;
+        }
+
+        public bool Equals(PaymentMethod other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Id == other.Id;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as PaymentMethod);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id;
         }
 
         /// <summary>
@@ -148,6 +166,11 @@ namespace Paynova.Api.Client.Model
         public static PaymentMethod PayPal
         {
             get { return new PaymentMethod(304); }
+        }
+
+        public static PaymentMethod PaynovaInvoice
+        {
+            get { return new PaymentMethod(311); }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Paynova.Api.Client.HttpRequestFactories
                 .Register(k => k.OrderNumber, request.OrderNumber)
                 .Register(k => k.TotalAmount, request.TotalAmount)
                 .Register(k => k.CurrencyCode, request.CurrencyCode)
-                .ApplyTo("orders/create/{orderNumber}/{totalAmount}/{currencyCode}");
+                .ApplyTo("/orders/create/{orderNumber}/{totalAmount}/{currencyCode}");
         }
     }
 }

@@ -4,14 +4,14 @@ using Paynova.Api.Client.Testing.Shoulds;
 using Paynova.Api.Client.Testing.TestData;
 using Xunit;
 
-namespace Paynova.Api.Client.IntegrationTests.OrderProcessTests
+namespace Paynova.Api.Client.IntegrationTests.AuthorizePaymentTests
 {
     [PrioritizedFixture]
-    public class When_order_with_line_items : IntegrationTestsOf<IPaynovaClient>, IUseFixture<When_order_with_line_items.Fixture>
+    public class When_authorize_paynova_direct_invoice : IntegrationTestsOf<IPaynovaClient>, IUseFixture<When_authorize_paynova_direct_invoice.Fixture>
     {
         private Fixture _state;
 
-        public When_order_with_line_items()
+        public When_authorize_paynova_direct_invoice()
         {
             SUT = Client;
         }
@@ -25,11 +25,11 @@ namespace Paynova.Api.Client.IntegrationTests.OrderProcessTests
         }
 
         [MyFact(Priority = 2)]
-        public void It_should_be_able_to_initialize_payment()
+        public void It_should_be_able_to_authorize_the_invoice()
         {
-            _state.InitializePaymentResponse = SUT.InitializePayment(_state.InitializePaymentRequest);
+            _state.AuthorizeInvoiceResponse = SUT.AuthorizeInvoice(_state.AuthorizeInvoiceRequest);
 
-            _state.InitializePaymentResponse.ShouldBe().Ok();
+            _state.AuthorizeInvoiceResponse.ShouldBe().Ok();
         }
 
         public void SetFixture(Fixture data)
@@ -37,11 +37,16 @@ namespace Paynova.Api.Client.IntegrationTests.OrderProcessTests
             _state = data;
         }
 
-        public class Fixture : OrderProcessFixture
+        public class Fixture : AuthorizeInvoiceFixture
         {
             protected override CreateOrderRequest CreateCreateOrderRequest()
             {
                 return CreateOrderRequestTestData.CreateDetailedWithLineItems(OrderNumber, 2);
+            }
+
+            protected override AuthorizeInvoiceRequest CreateAuthorizeInvoiceRequest()
+            {
+                return AuthorizePaymentRequestTestData.CreateForAuthorizationOfInvoiceRequest(CreateOrderResponse.OrderId, CreateOrderRequest.TotalAmount);
             }
         }
     }
