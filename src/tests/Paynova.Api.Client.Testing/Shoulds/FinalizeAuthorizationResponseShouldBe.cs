@@ -13,7 +13,6 @@ namespace Paynova.Api.Client.Testing.Shoulds
         {
             Item.Should().NotBeNull();
             Item.TransactionId.Should().NotBeNullOrWhiteSpace();
-            Item.BatchId.Should().NotBeNullOrWhiteSpace();
             Item.AcquirerId.Should().NotBeNullOrWhiteSpace();
             Item.TotalAmountFinalized.Should().Be(totalAmount);
             Item.AmountRemainingForFinalization.Should().Be(0);

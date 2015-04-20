@@ -179,6 +179,13 @@ namespace Paynova.Api.Client.Requests
 
             config(value);
 
+            return WithBillTo(value);
+        }
+
+        public virtual CreateOrderRequest WithBillTo(NameAndAddress value)
+        {
+            Ensure.That(value, "value").IsNotNull();
+
             BillTo = value;
 
             return this;
@@ -192,7 +199,24 @@ namespace Paynova.Api.Client.Requests
 
             config(value);
 
+            return WithShipTo(value);
+        }
+
+        public virtual CreateOrderRequest WithShipTo(NameAndAddress value)
+        {
+            Ensure.That(value, "value").IsNotNull();
+
             ShipTo = value;
+
+            return this;
+        }
+
+        public virtual CreateOrderRequest WithShipAndBillTo(NameAndAddress value)
+        {
+            Ensure.That(value, "value").IsNotNull();
+
+            ShipTo = value;
+            BillTo = value;
 
             return this;
         }

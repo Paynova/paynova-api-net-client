@@ -9,7 +9,7 @@ namespace Paynova.Api.Client.Testing
 
         protected Tests()
         {
-            Runtime = Api.Client.Runtime.ReplaceWith(new FakeRuntime());
+            Runtime = Client.Runtime.ReplaceWith(new FakeRuntime());
             Serializer = new DefaultJsonSerializer();
         }
     }
