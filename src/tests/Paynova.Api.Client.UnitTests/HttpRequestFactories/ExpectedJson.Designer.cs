@@ -142,6 +142,15 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {&quot;totalAmount&quot;:112.75,&quot;paymentChannelId&quot;:1,&quot;currencyCode&quot;:&quot;SEK&quot;,&quot;countryCode&quot;:&quot;SE&quot;,&quot;languageCode&quot;:&quot;SWE&quot;}.
+        /// </summary>
+        internal static string GetPaymentOptions {
+            get {
+                return ResourceManager.GetString("GetPaymentOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {&quot;transactionId&quot;:&quot;transaction1&quot;,&quot;orderId&quot;:&quot;7a246c7b-d97f-461d-9da8-e6f710f319a1&quot;,&quot;totalAmount&quot;:12.75,&quot;invoiceId&quot;:&quot;invoice1&quot;,&quot;lineItems&quot;:[{&quot;id&quot;:&quot;id:1&quot;,&quot;articleNumber&quot;:&quot;num:1&quot;,&quot;name&quot;:&quot;Some article1&quot;,&quot;description&quot;:&quot;A nice little Some article 1&quot;,&quot;productUrl&quot;:&quot;http://foo.com/articles/1&quot;,&quot;quantity&quot;:1,&quot;unitMeasure&quot;:&quot;st&quot;,&quot;unitAmountExcludingTax&quot;:2.25,&quot;taxPercent&quot;:25.00,&quot;totalLineTaxAmount&quot;:0.5625,&quot;totalLineAmount&quot;:2.8125,&quot;lineItemGroupKey&quot;:&quot;ODD&quot;},{&quot;id&quot;:&quot;id:2&quot;,&quot;articleNumber&quot;:&quot;num:2&quot;,&quot;name&quot;:&quot;Some article2&quot;,&quot;descript [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RefundPayment_With_LineItems {

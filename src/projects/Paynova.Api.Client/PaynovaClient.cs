@@ -22,6 +22,7 @@ namespace Paynova.Api.Client
         protected IHttpRequestFactory<AnnulAuthorizationRequest> AnnulAuthorizationHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<GetAddressesRequest> GetAddressesHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<GetCustomerProfileRequest> GetCustomerProfileHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<GetPaymentOptionsRequest> GetPaymentOptionsHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RemoveCustomerProfileCardRequest> RemoveCustomerProfileCardHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RemoveCustomerProfileRequest> RemoveCustomerProfileHttpRequestFactory { get; private set; }
 
@@ -47,6 +48,7 @@ namespace Paynova.Api.Client
             AnnulAuthorizationHttpRequestFactory = new AnnulAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             GetAddressesHttpRequestFactory = new GetAddressesHttpRequestFactory(Runtime.Instance, Serializer);
             GetCustomerProfileHttpRequestFactory = new GetCustomerProfileHttpRequestFactory(Runtime.Instance, Serializer);
+            GetPaymentOptionsHttpRequestFactory = new GetPaymentOptionsHttpRequestFactory(Runtime.Instance, Serializer);
             RemoveCustomerProfileCardHttpRequestFactory = new RemoveCustomerProfileCardHttpRequestFactory(Runtime.Instance, Serializer);
             RemoveCustomerProfileHttpRequestFactory = new RemoveCustomerProfileHttpRequestFactory(Runtime.Instance, Serializer);
 
@@ -151,6 +153,16 @@ namespace Paynova.Api.Client
             var httpResponse = Connection.Send(httpRequest);
 
             return ResponseFactory.Create<GetCustomerProfileResponse>(httpResponse);
+        }
+
+        public virtual GetPaymentOptionsResponse GetPaymentOptions(GetPaymentOptionsRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+
+            var httpRequest = GetPaymentOptionsHttpRequestFactory.Create(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ResponseFactory.Create<GetPaymentOptionsResponse>(httpResponse);
         }
 
         public virtual void RemoveCustomerProfile(string profileId)

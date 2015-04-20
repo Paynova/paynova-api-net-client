@@ -165,4 +165,7 @@
   <data name="AuthorizeInvoice" xml:space="preserve">
     <value>{"orderId":"499de2b4-e55e-433b-bf33-fa39efc0ce68","authorizationType":"InvoicePayment","totalAmount":125.50,"paymentMethodId":311,"paymentMethodProductId":"DirectInvoice","paymentChannelId":1}</value>
   </data>
+  <data name="GetPaymentOptions" xml:space="preserve">
+    <value>{"totalAmount":112.75,"paymentChannelId":1,"currencyCode":"SEK","countryCode":"SE","languageCode":"SWE"}</value>
+  </data>
 </root>

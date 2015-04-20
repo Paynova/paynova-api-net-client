@@ -124,6 +124,13 @@ namespace Paynova.Api.Client
         GetCustomerProfileResponse GetCustomerProfile(GetCustomerProfileRequest request);
 
         /// <summary>
+        /// Used to retrieve available payment options for your merchant account at Paynova.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        GetPaymentOptionsResponse GetPaymentOptions(GetPaymentOptionsRequest request);
+
+        /// <summary>
         /// Used to remove a customer profile and all related data.
         /// </summary>
         /// <param name="profileId"></param>
