@@ -4,7 +4,7 @@ Properties {
     $solution_path = "$solution_dir_path\$solution_name.sln"
     $project_name = "Paynova.Api.Client"
     $builds_dir_path = "builds"
-    $build_version = "1.0.0"
+    $build_version = "1.1.0"
     $build_config = "Release"
     $build_name = "${project_name}-v${build_version}-${build_config}"
     $build_dir_path = "${builds_dir_path}\${build_name}"
