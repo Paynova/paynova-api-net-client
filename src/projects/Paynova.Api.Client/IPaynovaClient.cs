@@ -46,7 +46,7 @@ namespace Paynova.Api.Client
         CreateOrderResponse CreateOrder(string orderNumber, CurrencyCode currencyCode, decimal totalAmount);
 
         /// <summary>
-        /// Used to create an order within Paynova's system.
+        /// Used to create an order within Paynovas system.
         /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
@@ -54,7 +54,7 @@ namespace Paynova.Api.Client
         CreateOrderResponse CreateOrder(CreateOrderRequest request);
 
         /// <summary>
-        /// Used to create a payment Session within Paynova's system
+        /// Used to create a payment Session within Paynovas system
         /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
@@ -62,12 +62,20 @@ namespace Paynova.Api.Client
         InitializePaymentResponse InitializePayment(InitializePaymentRequest request);
 
         /// <summary>
-        /// Used to used to refund a Payment within Paynova's system
+        /// Used to used to refund a Payment within Paynovas system
         /// <![CDATA[http://docs.paynova.com]]>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         RefundPaymentResponse RefundPayment(RefundPaymentRequest request);
+
+        /// <summary>
+        /// Used to authorize an invoice payment, instead of using pay-page.
+        /// The next step would be to Finalize it using <see cref="FinalizeAuthorization"/>.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        AuthorizeInvoiceResponse AuthorizeInvoice(AuthorizeInvoiceRequest request);
 
         /// <summary>
         /// Finalize all or part of an authorization.
@@ -85,6 +93,21 @@ namespace Paynova.Api.Client
         void AnnulAuthorization(AnnulAuthorizationRequest request);
 
         /// <summary>
+        ///  Used to lookup addresses for a customer.
+        /// </summary>
+        /// <param name="countryCode"></param>
+        /// /// <param name="governmentId"></param>
+        /// <returns></returns>
+        GetAddressesResponse GetAddresses(string countryCode, string governmentId);
+
+        /// <summary>
+        ///  Used to lookup addresses for a customer.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        GetAddressesResponse GetAddresses(GetAddressesRequest request);
+
+        /// <summary>
         ///  Used to retrieve information about a merchant customer profile stored at Paynova.
         /// </summary>
         /// <param name="profileId">
@@ -99,6 +122,13 @@ namespace Paynova.Api.Client
         /// <param name="request"></param>
         /// <returns></returns>
         GetCustomerProfileResponse GetCustomerProfile(GetCustomerProfileRequest request);
+
+        /// <summary>
+        /// Used to retrieve available payment options for your merchant account at Paynova.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        GetPaymentOptionsResponse GetPaymentOptions(GetPaymentOptionsRequest request);
 
         /// <summary>
         /// Used to remove a customer profile and all related data.
@@ -119,7 +149,7 @@ namespace Paynova.Api.Client
         /// Your unique identifier for the customer profile stored at Paynova
         /// </param>
         /// <param name="cardId">
-        /// Paynova's GUID identifier for the card associated with the customer profile
+        /// Paynovas GUID identifier for the card associated with the customer profile
         /// </param>
         void RemoveCustomerProfileCard(string profileId, Guid cardId);
 

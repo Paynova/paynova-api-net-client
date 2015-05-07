@@ -18,7 +18,9 @@ namespace Paynova.Api.Client.IntegrationTests
             {
                 ServerUrl = ReadAppSetting("paynova_client_serverurl"),
                 Username = ReadAppSetting("paynova_client_username"),
-                Password = ReadAppSetting("paynova_client_password")
+                Password = ReadAppSetting("paynova_client_password"),
+                CustomerGovernmentId = ReadAppSetting("customer_governmentId"),
+                CustomerEmail = ReadAppSetting("customer_email")
             };
         }
 

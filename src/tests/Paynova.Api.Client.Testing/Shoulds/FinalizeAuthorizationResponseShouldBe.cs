@@ -11,17 +11,13 @@ namespace Paynova.Api.Client.Testing.Shoulds
 
         public virtual void AuthorizedInFull(decimal totalAmount)
         {
-            Item.Should().NotBeNull();
+            Item.ShouldBeSuccessful();
             Item.TransactionId.Should().NotBeNullOrWhiteSpace();
-            Item.BatchId.Should().NotBeNullOrWhiteSpace();
             Item.AcquirerId.Should().NotBeNullOrWhiteSpace();
             Item.TotalAmountFinalized.Should().Be(totalAmount);
             Item.AmountRemainingForFinalization.Should().Be(0);
             Item.TotalAmountPendingFinalization.Should().Be(0);
             Item.CanFinalizeAgain.Should().BeFalse();
-            Item.Status.Should().NotBeNull();
-            Item.Status.StatusKey.Should().Be("SUCCESS");
-            Item.Status.StatusMessage.Should().Be("The operation was successful.");
         }
     }
 }

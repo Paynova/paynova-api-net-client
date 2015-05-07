@@ -40,6 +40,19 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DateTimeProvider.cs" />
+    <Compile Include="HttpRequestFactories\AuthorizeInvoiceHttpRequestFactory.cs" />
+    <Compile Include="HttpRequestFactories\GetAddressesHttpRequestFactory.cs" />
+    <Compile Include="HttpRequestFactories\GetPaymentOptionsHttpRequestFactory.cs" />
+    <Compile Include="Model\PaymentMethodDetail.cs" />
+    <Compile Include="Model\KeyedDisplayName.cs" />
+    <Compile Include="Model\LabelSymbolValue.cs" />
+    <Compile Include="Model\Link.cs" />
+    <Compile Include="Requests\AuthorizeInvoiceRequest.cs" />
+    <Compile Include="Requests\GetAddressesRequest.cs" />
+    <Compile Include="Requests\GetPaymentOptionsRequest.cs" />
+    <Compile Include="Responses\AuthorizeInvoiceResponse.cs" />
+    <Compile Include="Responses\GetAddressesResponse.cs" />
+    <Compile Include="Responses\GetPaymentOptionsResponse.cs" />
     <Compile Include="Security\EhnDigest.cs" />
     <Compile Include="Security\DigestBase.cs" />
     <Compile Include="EnsureThat\CustomMessageExtensions.cs" />

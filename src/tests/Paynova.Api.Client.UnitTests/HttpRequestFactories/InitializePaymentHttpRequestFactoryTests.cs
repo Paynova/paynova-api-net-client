@@ -23,7 +23,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             var httpRequest = SUT.Create(initializePaymentRequest);
 
             httpRequest.ShouldBe().PostAgainst(
-                "orders/{0}/initializePayment",
+                "/orders/{0}/initializePayment",
                 _orderId.ToString("n"));
         }
 
@@ -35,7 +35,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             var httpRequest = SUT.Create(initializePaymentRequest);
 
             httpRequest.ShouldBe().PostAgainst(
-                "orders/{0}/initializePayment",
+                "/orders/{0}/initializePayment",
                 _orderId.ToString("n"));
         }
 

@@ -15,11 +15,14 @@ namespace Paynova.Api.Client
         public ISerializer Serializer { get; private set; }
 
         protected IHttpRequestFactory<CreateOrderRequest> CreateOrderHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<AuthorizeInvoiceRequest> AuthorizeInvoiceHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<InitializePaymentRequest> InitializePaymentHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RefundPaymentRequest> RefundPaymentHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<FinalizeAuthorizationRequest> FinalizeAuthorizationHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<AnnulAuthorizationRequest> AnnulAuthorizationHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<GetAddressesRequest> GetAddressesHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<GetCustomerProfileRequest> GetCustomerProfileHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<GetPaymentOptionsRequest> GetPaymentOptionsHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RemoveCustomerProfileCardRequest> RemoveCustomerProfileCardHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RemoveCustomerProfileRequest> RemoveCustomerProfileHttpRequestFactory { get; private set; }
 
@@ -38,11 +41,14 @@ namespace Paynova.Api.Client
             Serializer = new DefaultJsonSerializer();
 
             CreateOrderHttpRequestFactory = new CreateOrderHttpRequestFactory(Runtime.Instance, Serializer);
+            AuthorizeInvoiceHttpRequestFactory = new AuthorizeInvoiceHttpRequestFactory(Runtime.Instance, Serializer);
             InitializePaymentHttpRequestFactory = new InitializePaymentHttpRequestFactory(Runtime.Instance, Serializer);
             RefundPaymentHttpRequestFactory = new RefundPaymentHttpRequestFactory(Runtime.Instance, Serializer);
             FinalizeAuthorizationHttpRequestFactory = new FinalizeAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             AnnulAuthorizationHttpRequestFactory = new AnnulAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
+            GetAddressesHttpRequestFactory = new GetAddressesHttpRequestFactory(Runtime.Instance, Serializer);
             GetCustomerProfileHttpRequestFactory = new GetCustomerProfileHttpRequestFactory(Runtime.Instance, Serializer);
+            GetPaymentOptionsHttpRequestFactory = new GetPaymentOptionsHttpRequestFactory(Runtime.Instance, Serializer);
             RemoveCustomerProfileCardHttpRequestFactory = new RemoveCustomerProfileCardHttpRequestFactory(Runtime.Instance, Serializer);
             RemoveCustomerProfileHttpRequestFactory = new RemoveCustomerProfileHttpRequestFactory(Runtime.Instance, Serializer);
 
@@ -63,50 +69,75 @@ namespace Paynova.Api.Client
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = CreateOrderHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            return ProcessCreateOrderHttpResponse(httpResponse);
+            return ResponseFactory.Create<CreateOrderResponse>(httpResponse);
         }
 
         public virtual InitializePaymentResponse InitializePayment(InitializePaymentRequest request)
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = InitializePaymentHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            return ProcessInitializePaymentHttpResponse(httpResponse);
+            return ResponseFactory.Create<InitializePaymentResponse>(httpResponse);
         }
 
         public virtual RefundPaymentResponse RefundPayment(RefundPaymentRequest request)
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = RefundPaymentHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            return ProcessRefundPaymentHttpResponse(httpResponse);
+            return ResponseFactory.Create<RefundPaymentResponse>(httpResponse);
+        }
+
+        public virtual AuthorizeInvoiceResponse AuthorizeInvoice(AuthorizeInvoiceRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+
+            var httpRequest = AuthorizeInvoiceHttpRequestFactory.Create(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ResponseFactory.Create<AuthorizeInvoiceResponse>(httpResponse);
         }
 
         public virtual FinalizeAuthorizationResponse FinalizeAuthorization(FinalizeAuthorizationRequest request)
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = FinalizeAuthorizationHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            return ProcessFinalizeAuthorizationHttpResponse(httpResponse);
+            return ResponseFactory.Create<FinalizeAuthorizationResponse>(httpResponse);
         }
 
         public virtual void AnnulAuthorization(AnnulAuthorizationRequest request)
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = AnnulAuthorizationHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            ProcessAnnulAuthorizationHttpResponse(httpResponse);
+            ResponseFactory.Create<AnnulAuthorizationResponse>(httpResponse);
+        }
+
+        public virtual GetAddressesResponse GetAddresses(string countryCode, string governmentId)
+        {
+            return GetAddresses(new GetAddressesRequest(countryCode, governmentId));
+        }
+
+        public virtual GetAddressesResponse GetAddresses(GetAddressesRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+
+            var httpRequest = GetAddressesHttpRequestFactory.Create(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ResponseFactory.Create<GetAddressesResponse>(httpResponse);
         }
 
         public virtual GetCustomerProfileResponse GetCustomerProfile(string profileId)
@@ -118,10 +149,20 @@ namespace Paynova.Api.Client
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = GetCustomerProfileHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            return ProcessGetCustomerProfileHttpResponse(httpResponse);
+            return ResponseFactory.Create<GetCustomerProfileResponse>(httpResponse);
+        }
+
+        public virtual GetPaymentOptionsResponse GetPaymentOptions(GetPaymentOptionsRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+
+            var httpRequest = GetPaymentOptionsHttpRequestFactory.Create(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ResponseFactory.Create<GetPaymentOptionsResponse>(httpResponse);
         }
 
         public virtual void RemoveCustomerProfile(string profileId)
@@ -133,10 +174,10 @@ namespace Paynova.Api.Client
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = RemoveCustomerProfileHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            ProcessRemoveCustomerProfileHttpResponse(httpResponse);
+            ResponseFactory.Create<RemoveCustomerProfileResponse>(httpResponse);
         }
 
         public virtual void RemoveCustomerProfileCard(string profileId, Guid cardId)
@@ -148,90 +189,10 @@ namespace Paynova.Api.Client
         {
             Ensure.That(request, "request").IsNotNull();
 
-            var httpRequest = CreateHttpRequest(request);
+            var httpRequest = RemoveCustomerProfileCardHttpRequestFactory.Create(request);
             var httpResponse = Connection.Send(httpRequest);
 
-            ProcessRemoveCustomerProfileCardHttpResponse(httpResponse);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(CreateOrderRequest request)
-        {
-            return CreateOrderHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(InitializePaymentRequest request)
-        {
-            return InitializePaymentHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(RefundPaymentRequest request)
-        {
-            return RefundPaymentHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(FinalizeAuthorizationRequest request)
-        {
-            return FinalizeAuthorizationHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(AnnulAuthorizationRequest request)
-        {
-            return AnnulAuthorizationHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(GetCustomerProfileRequest request)
-        {
-            return GetCustomerProfileHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(RemoveCustomerProfileCardRequest request)
-        {
-            return RemoveCustomerProfileCardHttpRequestFactory.Create(request);
-        }
-
-        protected virtual HttpRequest CreateHttpRequest(RemoveCustomerProfileRequest request)
-        {
-            return RemoveCustomerProfileHttpRequestFactory.Create(request);
-        }
-
-        protected virtual CreateOrderResponse ProcessCreateOrderHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<CreateOrderResponse>(httpResponse);
-        }
-
-        protected virtual InitializePaymentResponse ProcessInitializePaymentHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<InitializePaymentResponse>(httpResponse);
-        }
-
-        protected virtual RefundPaymentResponse ProcessRefundPaymentHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<RefundPaymentResponse>(httpResponse);
-        }
-
-        protected virtual FinalizeAuthorizationResponse ProcessFinalizeAuthorizationHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<FinalizeAuthorizationResponse>(httpResponse);
-        }
-
-        protected virtual AnnulAuthorizationResponse ProcessAnnulAuthorizationHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<AnnulAuthorizationResponse>(httpResponse);
-        }
-
-        protected virtual GetCustomerProfileResponse ProcessGetCustomerProfileHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<GetCustomerProfileResponse>(httpResponse);
-        }
-
-        protected virtual RemoveCustomerProfileCardResponse ProcessRemoveCustomerProfileCardHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<RemoveCustomerProfileCardResponse>(httpResponse);
-        }
-
-        protected virtual RemoveCustomerProfileResponse ProcessRemoveCustomerProfileHttpResponse(HttpResponse httpResponse)
-        {
-            return ResponseFactory.Create<RemoveCustomerProfileResponse>(httpResponse);
+            ResponseFactory.Create<RemoveCustomerProfileCardResponse>(httpResponse);
         }
     }
 }

@@ -8,14 +8,9 @@ namespace Paynova.Api.Client.Testing.TestData
     {
         private const decimal TotalAmount = 112.53m;
 
-        public static CreateOrderRequest CreateSimple(string orderNumber)
+        public static CreateOrderRequest CreateSimple(string orderNumber, decimal totalAmount = TotalAmount)
         {
-            return CreateSimple(orderNumber, TotalAmount);
-        }
-
-        public static CreateOrderRequest CreateSimple(string orderNumber, decimal totalAmount)
-        {
-            return new CreateOrderRequest(orderNumber, CurrencyCode.SwedishKrona, totalAmount);
+            return new CreateOrderRequest(orderNumber, CurrencyCode.SwedishKrona, TotalAmount);
         }
 
         public static CreateOrderRequest CreateDetailedWithInvalidTotalAmount(string orderNumber)

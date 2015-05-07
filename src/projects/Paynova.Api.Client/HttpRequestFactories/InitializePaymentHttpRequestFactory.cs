@@ -20,7 +20,7 @@ namespace Paynova.Api.Client.HttpRequestFactories
         {
             return new RelativeUrlBuilder(Runtime)
                 .Register(k => k.OrderId, request.OrderId)
-                .ApplyTo("orders/{orderId}/initializePayment");
+                .ApplyTo("/orders/{orderId}/initializePayment");
         }
     }
 }

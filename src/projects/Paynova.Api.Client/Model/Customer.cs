@@ -8,7 +8,12 @@
         public string CustomerId { get; set; }
 
         /// <summary>
-        /// The customer's e-mail address.          
+        /// The GovernmentId, aka. personal number.
+        /// </summary>
+        public string GovernmentId { get; set; }
+
+        /// <summary>
+        /// The customer's e-mail address.
         /// </summary>
         public string EmailAddress { get; set; }
 

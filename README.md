@@ -24,10 +24,13 @@ The operations available are exposed on the client:
 
 - CreateOrder
 - InitializePayment
+- AuthorizeInvoice
 - FinalizeAuthorization
 - AnnulAuthorization
 - RefundPayment
 - GetCustomerProfile
+- GetAddresses
+- GetPaymentOptions
 - RemoveCustomerProfile
 - RemoveCustomerProfileCard
 

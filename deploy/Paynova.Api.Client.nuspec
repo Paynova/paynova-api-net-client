@@ -14,7 +14,7 @@
       Offers a simple client that handles the HTTP communication with Paynova. It also offers typed requests and responses
       to assist you in discovering the Paynova API, validating digests etc.
     </description>
-    <iconUrl>http://www.paynova.com/images/paynova-logo-nuget.png</iconUrl>
+    <iconUrl>http://www.paynova.com/wp-content/uploads/2015/01/paynova-logo-nuget.png</iconUrl>
     <projectUrl>https://github.com/paynova/paynova-api-net-client</projectUrl>
     <licenseUrl>https://github.com/Paynova/paynova-api-net-client/blob/master/LICENCE.md</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

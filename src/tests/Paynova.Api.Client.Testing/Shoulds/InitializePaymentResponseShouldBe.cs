@@ -11,12 +11,9 @@ namespace Paynova.Api.Client.Testing.Shoulds
 
         public virtual void Ok()
         {
-            Item.Should().NotBeNull();
+            Item.ShouldBeSuccessful();
             Item.SessionId.Should().NotBeEmpty();
             Item.Url.Should().NotBeNullOrWhiteSpace();
-            Item.Status.Should().NotBeNull();
-            Item.Status.StatusKey.Should().Be("SUCCESS");
-            Item.Status.StatusMessage.Should().Be("The operation was successful.");
         }
     }
 }
