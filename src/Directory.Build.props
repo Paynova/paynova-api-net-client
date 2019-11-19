@@ -1,0 +1,22 @@
+﻿<Project>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Product>Paynova Api Client (Debug)</Product>
+    <AssemblyConfiguration>Debug</AssemblyConfiguration>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Product>Paynova Api Client (Release)</Product>
+    <AssemblyConfiguration>Debug</AssemblyConfiguration>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Paynova Api Client - the official .Net client for Paynovas API.</Description>
+    <Company>Paynova</Company>
+    <Copyright>Copyright © 2019 Paynova</Copyright>
+    <Trademark></Trademark>
+    <Culture></Culture>
+
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>2.0.0</AssemblyFileVersion>
+  </PropertyGroup>
+</Project>

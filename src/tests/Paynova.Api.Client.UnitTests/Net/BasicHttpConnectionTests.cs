@@ -3,23 +3,23 @@ using System.Net;
 using FluentAssertions;
 using Paynova.Api.Client.Net;
 using Paynova.Api.Client.Resources;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Net
 {
     public class BasicHttpConnectionTests : UnitTestsOf<BasicHttpConnection>
     {
-        [MyFact]
+        [Fact]
         public void When_not_passing_server_address_with_basic_credentials_It_will_throw_argument_exception()
         {
             Action a = () => SUT = new BasicHttpConnection(new Uri("https://api.foo.com"));
 
-            a.ShouldThrow<ArgumentException>()
+            a.Should().Throw<ArgumentException>()
                 .Where(ex => ex.ParamName.Equals("serverAddress.UserInfo"))
                 .Where(ex => ex.Message.Contains(ExceptionMessages.BasicHttpConnection_MissingBasicCredentials));
         }
 
-        [MyFact]
+        [Fact]
         public void When_passing_uri_not_ending_with_slash_It_will_append_slash()
         {
             SUT = new BasicHttpConnection(new Uri("https://testUsr:testPwd@foo.com"));
@@ -27,7 +27,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             SUT.ServerAddress.Should().EndWith("/");
         }
 
-        [MyFact]
+        [Fact]
         public void When_passing_url_not_ending_with_slash_It_will_append_slash()
         {
             SUT = new BasicHttpConnection("https://api.foo.com", "tstUsr", "tstPwd");
@@ -35,7 +35,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             SUT.ServerAddress.Should().EndWith("/");
         }
 
-        [MyFact]
+        [Fact]
         public void When_passing_url_and_credentials_It_will_strip_out_credentials()
         {
             SUT = new BasicHttpConnection("https://api.foo.com/", "s@", "p@ssword");
@@ -51,7 +51,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             SUT = new ExposingBasicHttpConnection(new Uri("https://testUsr:testPwd@api.foo.com"));
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_web_request_with_relative_url_not_starting_with_slash_It_generates_correct_url()
         {
             var httpWebRequest = SUT.ExposingCreateWebRequest(new HttpRequest("orders/1", "GET"));
@@ -59,7 +59,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             httpWebRequest.RequestUri.AbsoluteUri.Should().Be("https://api.foo.com/orders/1");
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_web_request_with_relative_url_starting_with_slash_It_generates_correct_url()
         {
             var httpWebRequest = SUT.ExposingCreateWebRequest(new HttpRequest("/orders/1", "GET"));
@@ -67,7 +67,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             httpWebRequest.RequestUri.AbsoluteUri.Should().Be("https://api.foo.com/orders/1");
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_web_request_It_should_append_correct_basic_auth_header()
         {
             var httpWebRequest = SUT.ExposingCreateWebRequest(new HttpRequest("orders/1", "GET"));
@@ -76,7 +76,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             httpWebRequest.Headers["Authorization"].Should().StartWith("Basic ");
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_web_request_It_should_have_accept_application_json_header()
         {
             var httpWebRequest = SUT.ExposingCreateWebRequest(new HttpRequest("orders/1", "GET"));
@@ -84,7 +84,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             httpWebRequest.Accept.Should().Be("application/json");
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_web_request_It_should_have_specific_user_agent_header()
         {
             var httpWebRequest = SUT.ExposingCreateWebRequest(new HttpRequest("orders/1", "GET"));
@@ -95,7 +95,7 @@ namespace Paynova.Api.Client.UnitTests.Net
 #endif
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_web_request_It_should_have_correct_method()
         {
             var getHttpWebRequest = SUT.ExposingCreateWebRequest(new HttpRequest("orders/1", "GET"));

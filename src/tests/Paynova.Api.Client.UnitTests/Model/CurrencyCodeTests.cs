@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using Paynova.Api.Client.Model;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Model
 {
     public class CurrencyCodeTests : UnitTestsOf<CurrencyCode>
     {
-        [MyFact]
+        [Fact]
         public void When_United_states_dollar_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.UnitedStatesDollar;
@@ -15,7 +15,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("840");
         }
 
-        [MyFact]
+        [Fact]
         public void When_European_euro_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.EuropeanEuro;
@@ -24,7 +24,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("978");
         }
 
-        [MyFact]
+        [Fact]
         public void When_British_pound_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.BritishPound;
@@ -33,7 +33,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("826");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Swedish_krona_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.SwedishKrona;
@@ -42,7 +42,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("752");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Norwegian_krone_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.NorwegianKrone;
@@ -51,7 +51,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("578");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Danish_krone_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.DanishKrone;
@@ -60,7 +60,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("208");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Swiss_franc_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.SwissFranc;
@@ -69,7 +69,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("756");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Australian_dollar_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.AustralianDollar;
@@ -78,7 +78,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("036");
         }
 
-        [MyFact]
+        [Fact]
         public void When_New_Zealand_dollar_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.NewZealandDollar;
@@ -87,7 +87,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("554");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Hong_Kong_dollar_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.HongKongDollar;
@@ -96,7 +96,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("344");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Singapore_dollar_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.SingaporeDollar;
@@ -105,7 +105,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("702");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Canadian_dollar_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.CanadianDollar;
@@ -114,7 +114,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("124");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Polish_Złoty_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.PolishZłoty;
@@ -123,7 +123,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("985");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Turkish_Lira_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.TurkishLira;
@@ -132,7 +132,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("949");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Chinese_Yuan_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.ChineseYuan;
@@ -141,7 +141,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("156");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Japanese_Yen_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.JapaneseYen;
@@ -150,7 +150,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Iso.Should().Be("392");
         }
 
-        [MyFact]
+        [Fact]
         public void When_Israeli_New_Sheqel_It_is_correct_ISO_4217_values()
         {
             SUT = CurrencyCode.IsraeliNewSheqel;

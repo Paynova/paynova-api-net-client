@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Paynova.Api.Client.Model;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Model
 {
@@ -17,7 +17,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT = new LineItem("some id", "some a.nr", "some name", "litres", fakeTaxPercent, fakeQuantity, fakeUnitAmountExcludingTax, totalLineAmount, totalLineTaxAmount);
         }
 
-        [MyFact]
+        [Fact]
         public void When_passing_tax_percent_less_than_1_and_greater_than_0_It_should_convert_it_to_percent()
         {
             const decimal fakeTaxPercent = 0.25m;
@@ -27,7 +27,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.TaxPercent.Should().Be(25m);
         }
 
-        [MyFact]
+        [Fact]
         public void When_passing_tax_percent_1_It_should_get_1_as_percent()
         {
             SUT = new LineItem("some id", "some a.nr", "some name", "litres", 1m, 2, 2, 2, 2);
@@ -35,7 +35,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.TaxPercent.Should().Be(1m);
         }
 
-        [MyFact]
+        [Fact]
         public void When_passing_tax_percent_0_It_should_get_0_as_percent()
         {
             SUT = new LineItem("some id", "some a.nr", "some name", "litres", 0m, 1, 1, 1, 1);
@@ -43,7 +43,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.TaxPercent.Should().Be(0m);
         }
 
-        [MyFact]
+        [Fact]
         public void When_configuring_line_item_group_key_It_should_update_the_item()
         {
             SUT.WithLineItemGroupKey(i => i.Discount);

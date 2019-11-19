@@ -4,24 +4,22 @@ using Xunit;
 
 namespace Paynova.Api.Client.IntegrationTests
 {
-    public abstract class IntegrationTests<TFixture> : IntegrationTests, IUseFixture<TFixture> where TFixture : IResetableFixture, new()
+    public abstract class IntegrationTests<TFixture> : IntegrationTests, IClassFixture<TFixture> where TFixture : class, IResetableFixture, new()
     {
-        private readonly TestStateRecycle _testStateRecycle;
+        protected readonly TestStateRecycle _testStateRecycle;
 
-        protected TFixture TestState { get; private set; }
+        protected TFixture TestState { get; set; }
 
-        protected IntegrationTests(TestStateRecycle testStateRecycle = TestStateRecycle.PerClass)
+        protected IntegrationTests(TFixture data, TestStateRecycle testStateRecycle = TestStateRecycle.PerClass)
         {
             _testStateRecycle = testStateRecycle;
-        }
 
-        public void SetFixture(TFixture data)
-        {
-            if(_testStateRecycle == TestStateRecycle.PerTest)
+            if (_testStateRecycle == TestStateRecycle.PerTest)
                 data.Reset();
 
             TestState = data;
         }
+
 
         protected override void Dispose(bool disposing)
         {

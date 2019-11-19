@@ -10,12 +10,12 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
 {
     public class FlowFixture : IResetableFixture
     {
-        private readonly Lazy<GetAddressesRequest> _getAddressesRequest;
-        private readonly Lazy<CreateOrderRequest> _createOrderRequest;
-        private readonly Lazy<AuthorizeInvoiceRequest> _authorizeInvoiceRequest;
-        private readonly Lazy<InitializePaymentRequest> _initializePaymentRequest;
-        private readonly Lazy<FinalizeAuthorizationRequest> _finalizeAuthorizationRequest;
-        private readonly Lazy<AnnulAuthorizationRequest> _annulAuthorizationRequest;
+        private readonly Testing.Lazy<GetAddressesRequest> _getAddressesRequest;
+        private readonly Testing.Lazy<CreateOrderRequest> _createOrderRequest;
+        private readonly Testing.Lazy<AuthorizeInvoiceRequest> _authorizeInvoiceRequest;
+        private readonly Testing.Lazy<InitializePaymentRequest> _initializePaymentRequest;
+        private readonly Testing.Lazy<FinalizeAuthorizationRequest> _finalizeAuthorizationRequest;
+        private readonly Testing.Lazy<AnnulAuthorizationRequest> _annulAuthorizationRequest;
 
         public string OrderNumber { get; private set; }
         public GetAddressesRequest GetAddressesRequest { get { return _getAddressesRequest.Instance; } }
@@ -34,12 +34,12 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
         public FlowFixture()
         {
             OrderNumber = Guid.NewGuid().ToString("n");
-            _getAddressesRequest = new Lazy<GetAddressesRequest>(InitGetAddressesRequest);
-            _createOrderRequest = new Lazy<CreateOrderRequest>(InitCreateOrderRequest);
-            _authorizeInvoiceRequest = new Lazy<AuthorizeInvoiceRequest>(InitAuthorizeInvoiceRequest);
-            _initializePaymentRequest = new Lazy<InitializePaymentRequest>(InitInitializePaymentRequest);
-            _finalizeAuthorizationRequest = new Lazy<FinalizeAuthorizationRequest>(InitFinalizeAuthorizationRequest);
-            _annulAuthorizationRequest = new Lazy<AnnulAuthorizationRequest>(InitAnnulAuthorizationRequest);
+            _getAddressesRequest = new Testing.Lazy<GetAddressesRequest>(InitGetAddressesRequest);
+            _createOrderRequest = new Testing.Lazy<CreateOrderRequest>(InitCreateOrderRequest);
+            _authorizeInvoiceRequest = new Testing.Lazy<AuthorizeInvoiceRequest>(InitAuthorizeInvoiceRequest);
+            _initializePaymentRequest = new Testing.Lazy<InitializePaymentRequest>(InitInitializePaymentRequest);
+            _finalizeAuthorizationRequest = new Testing.Lazy<FinalizeAuthorizationRequest>(InitFinalizeAuthorizationRequest);
+            _annulAuthorizationRequest = new Testing.Lazy<AnnulAuthorizationRequest>(InitAnnulAuthorizationRequest);
         }
 
         public void Reset()

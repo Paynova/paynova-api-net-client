@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Microsoft.Extensions.Configuration;
 using Paynova.Api.Client.Net;
 
 namespace Paynova.Api.Client.IntegrationTests
@@ -9,19 +10,28 @@ namespace Paynova.Api.Client.IntegrationTests
 
         static IntegrationTestsRuntime()
         {
-            Environment = LoadTestEnvironment();
+            var config = LoadConfiguration();
+            Environment = LoadTestEnvironment(config);
         }
 
-        private static TestEnvironment LoadTestEnvironment()
+        private static TestEnvironment LoadTestEnvironment(IConfiguration config)
         {
             return new TestEnvironment
             {
-                ServerUrl = ReadAppSetting("paynova_client_serverurl"),
-                Username = ReadAppSetting("paynova_client_username"),
-                Password = ReadAppSetting("paynova_client_password"),
-                CustomerGovernmentId = ReadAppSetting("customer_governmentId"),
-                CustomerEmail = ReadAppSetting("customer_email")
+                ServerUrl = config["paynova_client_serverurl"],
+                Username = config["paynova_client_username"],
+                Password = config["paynova_client_password"],
+                CustomerGovernmentId = config["customer_governmentId"],
+                CustomerEmail = config["customer_email"],
             };
+        }
+
+        private static IConfiguration LoadConfiguration()
+        {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            return config;
         }
 
         private static string ReadAppSetting(string key)

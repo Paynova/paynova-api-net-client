@@ -1,92 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Paynova.Api.Client.Testing</RootNamespace>
-    <AssemblyName>Paynova.Api.Client.Testing</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions">
-      <HintPath>..\..\packages\FluentAssertions.2.2.0.0\lib\net35\FluentAssertions.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="xunit">
-      <HintPath>..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
-    </Reference>
+    <PackageReference Include="FluentAssertions" Version="5.9.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="FakeDateTimeProvider.cs" />
-    <Compile Include="Lazy.cs" />
-    <Compile Include="MyFactAttribute.cs" />
-    <Compile Include="PrioritizedFixtureAttribute.cs" />
-    <Compile Include="PrioritizedFixtureClassCommand.cs" />
-    <Compile Include="Shoulds\AnnulAuthorizationResponseShouldBe.cs" />
-    <Compile Include="Shoulds\AuthorizeInvoiceResponseShouldBe.cs" />
-    <Compile Include="Shoulds\CommonResponseShouldBeExtensions.cs" />
-    <Compile Include="Shoulds\FinalizeAuthorizationResponseShouldBe.cs" />
-    <Compile Include="Shoulds\GetAddressesResponseShouldBe.cs" />
-    <Compile Include="Shoulds\GetCustomerProfileResponseShouldBe.cs" />
-    <Compile Include="Shoulds\GetPaymentOptionsResponseShouldBe.cs" />
-    <Compile Include="Shoulds\InitializePaymentResponseShouldBe.cs" />
-    <Compile Include="Shoulds\PaynovaSdkExceptionShouldBe.cs" />
-    <Compile Include="Shoulds\CreateOrderResponseShouldBe.cs" />
-    <Compile Include="Shoulds\HttpRequestShouldBe.cs" />
-    <Compile Include="Shoulds\RefundPaymentResponseShouldBe.cs" />
-    <Compile Include="Shoulds\ShouldBe.cs" />
-    <Compile Include="Shoulds\ShouldExtensions.cs" />
-    <Compile Include="TestData\CreateOrderRequestTestData.cs" />
-    <Compile Include="TestData\InitializePaymentRequestTestData.cs" />
-    <Compile Include="TestData\LineItemTestData.cs" />
-    <Compile Include="FakeRuntime.cs" />
-    <Compile Include="Tests.cs" />
-    <Compile Include="TestsOf.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\projects\Paynova.Api.Client\Paynova.Api.Client.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Remove="TestData\AuthorizePaymentRequestTestData.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\projects\Paynova.Api.Client\Paynova.Api.Client.csproj">
-      <Project>{376172fe-fb48-4945-a720-4c6e6305865f}</Project>
-      <Name>Paynova.Api.Client</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
