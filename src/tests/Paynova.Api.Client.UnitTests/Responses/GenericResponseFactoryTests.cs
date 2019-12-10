@@ -203,6 +203,21 @@ namespace Paynova.Api.Client.UnitTests.Responses
                         "        \"symbol\": \"kr\"," +
                         "        \"value\": \"95.75\"" +
                         "    }," +
+                        "    \"effectiveRate\": {" +
+                        "        \"label\": \"Effektiv ränta\"," +
+                        "        \"symbol\": \"%\"," +
+                        "        \"value\": \"28.2\"" +
+                        "    }," +
+                        "    \"totalCost\": {" +
+                        "        \"label\": \"Total kostnad\"," +
+                        "        \"symbol\": \"kr\"," +
+                        "        \"value\": \"11411.28\"" +
+                        "    }," +
+                        "    \"monthlyCost\": {" +
+                        "        \"label\": \"Månadskostnad\"," +
+                        "        \"symbol\": \"kr\"," +
+                        "        \"value\": \"950.94\"" +
+                        "    }," +
                         "    \"numberOfInstallments\": 3," +
                         "    \"installmentPeriod\": 1," +
                         "    \"installmentUnit\": \"month\"," +
@@ -248,6 +263,25 @@ namespace Paynova.Api.Client.UnitTests.Responses
                     Symbol = "kr",
                     Value = 95.75m
                 },
+                EffectiveRate = new LabelSymbolValue<decimal>
+                {
+                    Label = "Effektiv ränta",
+                    Symbol = "%",
+                    Value = 28.2m
+                },
+                TotalCost = new LabelSymbolValue<decimal>
+                {
+                    Label = "Total kostnad",
+                    Symbol = "kr",
+                    Value = 11411.28m
+                },
+                MonthlyCost = new LabelSymbolValue<decimal>
+                {
+                    Label = "Månadskostnad",
+                    Symbol = "kr",
+                    Value = 950.94m
+                },
+
                 NumberOfInstallments = 3,
                 InstallmentPeriod = 1,
                 InstallmentUnit = "month",
