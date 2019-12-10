@@ -11,7 +11,7 @@ open Fake.IO.Globbing.Operators
 open Fake.Core.TargetOperators
 
 let buildConfig = "Release"
-let buildVersion = "2.0.0"
+let verionSuffix = "preview.2"
 let apiClientPath = "src/projects/Paynova.Api.Client"
 let apiClientProjectName = "Paynova.Api.Client.csproj"
 
@@ -41,7 +41,7 @@ Target.create "Pack" (fun _ ->
         { packOptions with
               Configuration = DotNet.BuildConfiguration.fromString (buildConfig)
               OutputPath = Some apiClientPath
-              VersionSuffix = Some buildVersion }
+              VersionSuffix = Some verionSuffix }
 
     !!(apiClientPath + "/" + apiClientProjectName) |> Seq.iter (DotNet.pack packParams))
 

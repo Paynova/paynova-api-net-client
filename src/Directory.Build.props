@@ -6,14 +6,10 @@
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Product>Paynova Api Client (Release)</Product>
-    <AssemblyConfiguration>Debug</AssemblyConfiguration>
+    <AssemblyConfiguration>Release</AssemblyConfiguration>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>Paynova Api Client - the official .Net client for Paynovas API.</Description>
-
-
-
     <description>
       API Client library that helps you get up and running and consuming Paynovas restful API.
 
@@ -26,8 +22,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Can be found on project site: https://github.com/Paynova/paynova-api-net-client/wiki/release-notes</releaseNotes>
     <tags>paynova psp payments</tags>
-    
-    
+
+
     <Company>Paynova</Company>
     <Copyright>Copyright © 2019 Paynova</Copyright>
     <Trademark></Trademark>
