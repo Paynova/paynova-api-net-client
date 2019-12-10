@@ -11,6 +11,23 @@
 
   <PropertyGroup>
     <Description>Paynova Api Client - the official .Net client for Paynovas API.</Description>
+
+
+
+    <description>
+      API Client library that helps you get up and running and consuming Paynovas restful API.
+
+      Offers a simple client that handles the HTTP communication with Paynova. It also offers typed requests and responses
+      to assist you in discovering the Paynova API, validating digests etc.
+    </description>
+    <iconUrl>http://www.paynova.com/wp-content/uploads/2015/01/paynova-logo-nuget.png</iconUrl>
+    <projectUrl>https://github.com/paynova/paynova-api-net-client</projectUrl>
+    <licenseUrl>https://github.com/Paynova/paynova-api-net-client/blob/master/LICENCE.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Can be found on project site: https://github.com/Paynova/paynova-api-net-client/wiki/release-notes</releaseNotes>
+    <tags>paynova psp payments</tags>
+    
+    
     <Company>Paynova</Company>
     <Copyright>Copyright © 2019 Paynova</Copyright>
     <Trademark></Trademark>
