@@ -10,7 +10,7 @@ namespace Paynova.Api.Client.Net
         public int StatusCode { get; private set; }
         public string StatusDescription { get; private set; }
         public string Content { get; set; }
-        public bool IsEmpty { get { return string.IsNullOrEmpty(Content); } }
+        public bool IsEmpty => string.IsNullOrEmpty(Content);
 
         public HttpResponse(Uri requestUri, string method, HttpStatusCode statusCode, string statusDescription)
         {

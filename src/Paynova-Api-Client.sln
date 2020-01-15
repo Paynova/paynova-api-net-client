@@ -8,11 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paynova.Api.Client.UnitTests", "tests\Paynova.Api.Client.UnitTests\Paynova.Api.Client.UnitTests.csproj", "{20294118-5EDA-4666-9AB9-9F51A06ACD84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paynova.Api.Client.UnitTests", "tests\Paynova.Api.Client.UnitTests\Paynova.Api.Client.UnitTests.csproj", "{20294118-5EDA-4666-9AB9-9F51A06ACD84}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{56926E0C-A5B9-424C-9E0B-E2BE8899DBF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paynova.Api.Client.Testing", "tests\Paynova.Api.Client.Testing\Paynova.Api.Client.Testing.csproj", "{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paynova.Api.Client.Testing", "tests\Paynova.Api.Client.Testing\Paynova.Api.Client.Testing.csproj", "{DF9F9FB2-180D-49D5-9BD1-D67F9BDE67C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paynova.Api.Client", "projects\Paynova.Api.Client\Paynova.Api.Client.csproj", "{978BDC3D-AAE1-4243-89F8-17F943857FC3}"
 EndProject

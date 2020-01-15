@@ -5,5 +5,6 @@
         public const string Get = "GET";
         public const string Post = "POST";
         public const string Delete = "DELETE";
+        public const string Patch = "PATCH";
     }
 }
