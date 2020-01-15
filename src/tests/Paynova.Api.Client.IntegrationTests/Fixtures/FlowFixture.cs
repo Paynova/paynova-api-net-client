@@ -18,12 +18,12 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
         private readonly Testing.Lazy<AnnulAuthorizationRequest> _annulAuthorizationRequest;
 
         public string OrderNumber { get; private set; }
-        public GetAddressesRequest GetAddressesRequest { get { return _getAddressesRequest.Instance; } }
-        public CreateOrderRequest CreateOrderRequest { get { return _createOrderRequest.Instance; } }
-        public AuthorizeInvoiceRequest AuthorizeInvoiceRequest { get { return _authorizeInvoiceRequest.Instance; } }
-        public InitializePaymentRequest InitializePaymentRequest { get { return _initializePaymentRequest.Instance; } }
-        public FinalizeAuthorizationRequest FinalizeAuthorizationRequest { get { return _finalizeAuthorizationRequest.Instance; } }
-        public AnnulAuthorizationRequest AnnulAuthorizationRequest { get { return _annulAuthorizationRequest.Instance; } }
+        public GetAddressesRequest GetAddressesRequest => _getAddressesRequest.Instance;
+        public CreateOrderRequest CreateOrderRequest => _createOrderRequest.Instance;
+        public AuthorizeInvoiceRequest AuthorizeInvoiceRequest => _authorizeInvoiceRequest.Instance;
+        public InitializePaymentRequest InitializePaymentRequest => _initializePaymentRequest.Instance;
+        public FinalizeAuthorizationRequest FinalizeAuthorizationRequest => _finalizeAuthorizationRequest.Instance;
+        public AnnulAuthorizationRequest AnnulAuthorizationRequest => _annulAuthorizationRequest.Instance;
 
         public GetAddressesResponse GetAddressesResponse { get; set; }
         public CreateOrderResponse CreateOrderResponse { get; set; }
@@ -59,20 +59,18 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
 
         protected virtual CreateOrderRequest InitCreateOrderRequest()
         {
-            var address = GetAddressesResponse != null
-                ? GetAddressesResponse.Addresses.FirstOrDefault(a => a.Address.Type == "legal")
-                : null;
+            var address = GetAddressesResponse?.Addresses.FirstOrDefault(a => a.Address.Type == "legal");
             var lineItems = new[]
             {
-                new LineItem(1, "MED-RED-BAL", "Medium red balloon.", "ea.", 25m, 1, 45, 56.25m, 11.25m)
+                new LineItem(1, "MED-RED-BAL", "Medium red balloon.", "some product", 1, "ea.", 25m, 45, 11.25m, 56.25m,  null)
                 {
                     Description = "Line item 1"
                 },
-                new LineItem(2, "MED-RED-BAL", "Medium red balloon.", "ea.", 25m, 2, 45, 112.50m, 22.50m)
+                new LineItem(2, "MED-RED-BAL", "Medium red balloon.", "some product", 2, "ea.", 25m, 45, 22.50m, 112.50m, null)
                 {
                     Description = "Line item 2"
                 },
-                new LineItem(3, "MED-RED-BAL", "Medium red balloon.", "ea.", 25m, 1, 45, 56.25m, 11.25m)
+                new LineItem(3, "MED-RED-BAL", "Medium red balloon.", "some product", 1, "ea.", 25m, 45, 11.25m, 56.25m, null)
                 {
                     Description = "Line item 3"
                 }

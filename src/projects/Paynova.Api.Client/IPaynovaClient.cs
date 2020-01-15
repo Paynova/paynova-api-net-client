@@ -70,6 +70,14 @@ namespace Paynova.Api.Client
         RefundPaymentResponse RefundPayment(RefundPaymentRequest request);
 
         /// <summary>
+        /// used to update an order when refund a Payment within Paynova system
+        /// <![CDATA[http://docs.paynova.com]]>
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        UpdateFinalizedLineItemsResponse UpdateFinalizedLineItems(UpdateFinalizedLineItemsRequest request);
+
+        /// <summary>
         /// Used to authorize an invoice payment, instead of using pay-page.
         /// The next step would be to Finalize it using <see cref="FinalizeAuthorization"/>.
         /// </summary>
