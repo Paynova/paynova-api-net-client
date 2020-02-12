@@ -18,7 +18,7 @@ namespace Paynova.Api.Client.Net
 
         private string GenerateBasicAuthorizationCredentials(string username, string password)
         {
-            var credentialsBytes = Encoding.UTF8.GetBytes(string.Format("{0}:{1}", username, password));
+            var credentialsBytes = Encoding.UTF8.GetBytes($"{username}:{password}");
 
             return Convert.ToBase64String(credentialsBytes);
         }

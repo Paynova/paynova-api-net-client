@@ -21,12 +21,14 @@ namespace Paynova.Api.Client.IntegrationTests
                 "extra",
                 "extra",
                 "Extra line failing order total amount",
+                "some product",
+                1,
                 "ea.",
                 25,
-                1,
                 10m,
+                2.5m,
                 12.5m,
-                2.5m);
+                null);
         }
     }
 }

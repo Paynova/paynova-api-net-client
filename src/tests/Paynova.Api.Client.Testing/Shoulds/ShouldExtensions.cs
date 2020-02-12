@@ -5,7 +5,6 @@ using System.Diagnostics;
 using FluentAssertions;
 using Paynova.Api.Client.Net;
 using Paynova.Api.Client.Responses;
-using Xunit.Sdk;
 
 namespace Paynova.Api.Client.Testing.Shoulds
 {
@@ -52,7 +51,7 @@ namespace Paynova.Api.Client.Testing.Shoulds
             }
 
             if (type == typeof(object))
-                throw new AssertException("You need to specify type to do the value equality comparision.");
+                throw new Exception("You need to specify type to do the value equality comparision.");
 
             if (IsSimpleType(type))
             {
@@ -64,7 +63,7 @@ namespace Paynova.Api.Client.Testing.Shoulds
             if (properties.Length == 0)
             {
                 if (!Equals(a, b))
-                    throw new AssertException(string.Format("Instances of type '{0}' are not equal.", type.Name));
+                    throw new Exception(string.Format("Instances of type '{0}' are not equal.", type.Name));
             }
 
             foreach (var propertyInfo in type.GetProperties())

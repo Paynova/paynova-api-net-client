@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using FluentAssertions;
 using Paynova.Api.Client.Security;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Security
 {
@@ -14,7 +14,7 @@ namespace Paynova.Api.Client.UnitTests.Security
             SUT = new EhnDigest("SECRET_KEYSECRET");
         }
 
-        [MyFact]
+        [Fact]
         public void When_correct_It_can_calculate_the_digest()
         {
             var data = new NameValueCollection
@@ -30,7 +30,7 @@ namespace Paynova.Api.Client.UnitTests.Security
             digest.Should().Be(CorrectDigest);
         }
 
-        [MyFact]
+        [Fact]
         public void When_correct_It_should_validate_to_true()
         {
             var data = new NameValueCollection
@@ -47,7 +47,7 @@ namespace Paynova.Api.Client.UnitTests.Security
             isValid.Should().BeTrue();
         }
 
-        [MyFact]
+        [Fact]
         public void When_correct_It_should_validate_to_true_and_return_the_digest()
         {
             var data = new NameValueCollection
@@ -66,7 +66,7 @@ namespace Paynova.Api.Client.UnitTests.Security
             calculatedDigest.Should().Be(CorrectDigest);
         }
 
-        [MyFact]
+        [Fact]
         public void When_wrong_data_It_should_validate_to_false()
         {
             var data = new NameValueCollection
@@ -83,7 +83,7 @@ namespace Paynova.Api.Client.UnitTests.Security
             isValid.Should().BeFalse();
         }
 
-        [MyFact]
+        [Fact]
         public void When_wrong_data_It_should_validate_to_false_and_return_the_digest()
         {
             const string fakeDigest = "Some fake digest sent from Paynova";

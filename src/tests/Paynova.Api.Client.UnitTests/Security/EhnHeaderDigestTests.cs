@@ -1,6 +1,6 @@
 using FluentAssertions;
 using Paynova.Api.Client.Security;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Security
 {
@@ -11,7 +11,7 @@ namespace Paynova.Api.Client.UnitTests.Security
             SUT = new EhnHeaderDigest("SECRET_KEYSECRET");
         }
 
-        [MyFact]
+        [Fact]
         public void Can_calculate_the_digest()
         {
             var data = "CUSTOM_DATA_COUNT=0&DELIVERY_TIMESTAMP=2014-05-30+08%3a07%3a54Z&DIGEST=1E16B78487A4086E36B3BD07B87BA7CF7DB61981"

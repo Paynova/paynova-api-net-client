@@ -2,8 +2,8 @@ using System.Linq;
 using FluentAssertions;
 using Paynova.Api.Client.Model;
 using Paynova.Api.Client.Requests;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.TestData;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Requests
 {
@@ -14,7 +14,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT = new CreateOrderRequest("order1", CurrencyCode.SwedishKrona, 112.75m);
         }
 
-        [MyFact]
+        [Fact]
         public void When_add_of_line_items_It_should_add_lineItems_in_the_request()
         {
             SUT.WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -24,7 +24,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.LineItems.Length.Should().Be(3);
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_line_items_It_should_overwrite_lineItems_in_the_request()
         {
             SUT.WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -34,7 +34,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.LineItems.Length.Should().Be(3);
         }
 
-        [MyFact]
+        [Fact]
         public void When_clearing_line_items_It_should_remove_all_lineItems_in_the_request()
         {
             SUT.WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -44,7 +44,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.LineItems.Should().BeEmpty();
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_bill_to_using_config_It_should_update_the_request()
         {
             SUT.WithBillTo(c =>
@@ -57,7 +57,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.BillTo.Address.Street1.Should().Be("Some street");
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_ship_to_using_config_It_should_update_the_request()
         {
             SUT.WithShipTo(c =>
@@ -70,7 +70,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.ShipTo.Address.Street1.Should().Be("Some street");
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_customer_using_config_It_should_update_the_request()
         {
             SUT.WithCustomer(c =>

@@ -1,7 +1,7 @@
 ﻿using Paynova.Api.Client.HttpRequestFactories;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
 using Paynova.Api.Client.Testing.TestData;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
 {
@@ -14,7 +14,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             SUT = new CreateOrderHttpRequestFactory(Runtime, Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void When_simple_order_It_generates_relative_url_with_order_number_and_amount_and_currency()
         {
             var createOrderRequest = CreateOrderRequestTestData.CreateSimple(OrderNumber);
@@ -28,7 +28,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 createOrderRequest.CurrencyCode);
         }
 
-        [MyFact]
+        [Fact]
         public void When_detailed_order_It_generates_relative_url_with_order_number_and_amount_and_currency()
         {
             var createOrderRequest = CreateOrderRequestTestData.CreateDetailedWithLineItems(OrderNumber, 2);
@@ -42,7 +42,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 createOrderRequest.CurrencyCode);
         }
 
-        [MyFact]
+        [Fact]
         public void When_simple_order_It_can_create_http_request()
         {
             var createOrderRequest = CreateOrderRequestTestData.CreateSimple(OrderNumber);
@@ -52,7 +52,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostWithJson(ExpectedJson.SimpleCreateOrder);
         }
 
-        [MyFact]
+        [Fact]
         public void When_detailed_order_It_can_create_http_request()
         {
             var createOrderRequest = CreateOrderRequestTestData.CreateDetailedWithLineItems(OrderNumber, 2);
@@ -62,7 +62,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostWithJson(ExpectedJson.DetailedCreateOrder_With_LineItems);
         }
 
-        [MyFact]
+        [Fact]
         public void When_detailed_order_with_travel_line_items_It_can_create_http_request()
         {
             var createOrderRequest = CreateOrderRequestTestData.CreateDetailedWithTravelLineItems(OrderNumber);

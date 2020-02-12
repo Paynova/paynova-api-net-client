@@ -20,7 +20,7 @@ namespace Paynova.Api.Client.Testing.Shoulds
                 var card = Item.ProfileCards[index];
                 var expectedCard = cardDetails[index];
 
-                card.ShouldBeEquivalentTo(expectedCard);
+                card.Should().BeEquivalentTo(expectedCard);
             }
         }
     }

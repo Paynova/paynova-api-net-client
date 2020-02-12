@@ -2,8 +2,8 @@
 using Paynova.Api.Client.HttpRequestFactories;
 using Paynova.Api.Client.Model;
 using Paynova.Api.Client.Requests;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
 {
@@ -19,7 +19,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             SUT = new AuthorizeInvoiceHttpRequestFactory(Runtime, Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void Can_create_http_request()
         {
             var request = new AuthorizeInvoiceRequest(_orderId, TotalAmount, PaymentMethod.PaynovaInvoice, "DirectInvoice", PaymentChannelId.Web);

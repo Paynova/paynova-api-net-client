@@ -2,7 +2,7 @@
 using System.Linq;
 using FluentAssertions;
 using Paynova.Api.Client.Model;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Model
 {
@@ -13,7 +13,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT = new AirTravelSegment(new DateTime(2014, 5, 1, 23, 35, 0), new DateTime(2014, 5, 2, 7, 5, 0), "SWE", "FRO", "IATA:ARN", "IATA:GOT", "IATA:SK");
         }
 
-        [MyFact]
+        [Fact]
         public override void It_should_be_configured_with_correct_segment_type()
         {
             SUT.SegmentType.Should().Be("Air");
@@ -27,7 +27,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT = new RailTravelSegment(new DateTime(2014, 5, 1, 23, 35, 0), new DateTime(2014, 5, 2, 7, 5, 0), "SWE", "SWE", "ESTOCOLMO CITY", "GBG CITY", "UIC:1174");
         }
 
-        [MyFact]
+        [Fact]
         public override void It_should_be_configured_with_correct_segment_type()
         {
             SUT.SegmentType.Should().Be("Rail");
@@ -36,24 +36,24 @@ namespace Paynova.Api.Client.UnitTests.Model
 
     public abstract class TravelSegmentUnitTests<T> : UnitTestsOf<T> where T : TravelSegment<T>
     {
-        [MyFact]
+        [Fact]
         public abstract void It_should_be_configured_with_correct_segment_type();
 
-        [MyFact]
+        [Fact]
         public void It_extracts_deptarture_date_time_correctly()
         {
             SUT.DepartureDate.Should().Be("2014-05-01");
             SUT.DepartureTime.Should().Be("23:35");
         }
 
-        [MyFact]
+        [Fact]
         public void It_extracts_arrival_date_time_correctly()
         {
             SUT.ArrivalDate.Should().Be("2014-05-02");
             SUT.ArrivalTime.Should().Be("07:05");
         }
 
-        [MyFact]
+        [Fact]
         public void When_add_of_line_items_It_should_add_lineItems_in_the_request()
         {
             SUT
@@ -63,7 +63,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Tickets.Length.Should().Be(2);
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_line_items_It_should_overwrite_lineItems_in_the_request()
         {
             SUT
@@ -75,7 +75,7 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT.Tickets.Single().IsRebookable.Should().Be(false);
         }
 
-        [MyFact]
+        [Fact]
         public void When_clearing_line_items_It_should_remove_all_lineItems_in_the_request()
         {
             SUT

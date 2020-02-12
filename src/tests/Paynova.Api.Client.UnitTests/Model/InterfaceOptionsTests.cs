@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Paynova.Api.Client.Extensions;
 using Paynova.Api.Client.Model;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Model
 {
@@ -17,7 +17,7 @@ namespace Paynova.Api.Client.UnitTests.Model
                 "http://api.test.com/paynova/pending".ToUri());
         }
 
-        [MyFact]
+        [Fact]
         public void When_configuring_line_item_group_key_It_should_update_the_item()
         {
             SUT.WithLayoutName(i => i.Desktop);

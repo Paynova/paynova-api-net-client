@@ -1,7 +1,7 @@
 ﻿using Paynova.Api.Client.HttpRequestFactories;
 using Paynova.Api.Client.Requests;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
 {
@@ -14,7 +14,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             SUT = new RemoveCustomerProfileHttpRequestFactory(Runtime, Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_request_It_should_render_relative_url_with_profile_and_card_id()
         {
             var request = new RemoveCustomerProfileRequest(ProfileId);
@@ -26,7 +26,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 ProfileId);
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_request_It_creates_a_http_delete_request_without_json()
         {
             var request = new RemoveCustomerProfileRequest(ProfileId);

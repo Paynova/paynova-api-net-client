@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Paynova.Api.Client.EnsureThat;
 
 namespace Paynova.Api.Client.Model
@@ -73,19 +74,26 @@ namespace Paynova.Api.Client.Model
         public TravelData TravelData { get; set; }
 
         /// <summary>
+        /// List of Components affiliate with Line Item
+        /// </summary>
+        public List<LineItemComponent> Components { get; set; }
+
+        /// <summary>
         /// Creates a <see cref="LineItem"/> with all necessary parameters.
         /// </summary>
         /// <param name="id">The id for this line item. This value must be unique per collection of line items.</param>
         /// <param name="articleNumber">The article/product number for the item being sold.</param>
         /// <param name="name">The name/description of the item being sold.</param>
-        /// <param name="unitMeasure">The unit of measure of the product/service being sold. Examples: meters, pieces, st., ea.</param>
-        /// <param name="taxPercent">The tax/VAT percentage for the item being sold. Example: 25</param>
+        /// <param name="description"></param>
         /// <param name="quantity">The number of items being sold at this price.</param>
+        /// <param name="unitMeasure">The unit of measure of the product/service being sold. Examples: meters, pieces, st., ea.</param>
         /// <param name="unitAmountExcludingTax">The price of each unit, excluding tax.</param>
-        /// <param name="totalLineAmount">The total amount charged for this line, including tax/VAT (quantity * unitAmountExcludingTax + calculated tax).</param>
+        /// <param name="taxPercent">The tax/VAT percentage for the item being sold. Example: 25</param>
         /// <param name="totalLineTaxAmount">The total tax/VAT amount charged for this line.</param>
-        public LineItem(int id, string articleNumber, string name, string unitMeasure, decimal taxPercent, decimal quantity, decimal unitAmountExcludingTax, decimal totalLineAmount, decimal totalLineTaxAmount)
-            : this(id.ToString(Runtime.Instance.NumberFormatProvider), articleNumber, name, unitMeasure, taxPercent, quantity, unitAmountExcludingTax, totalLineAmount, totalLineTaxAmount)
+        /// <param name="totalLineAmount">The total amount charged for this line, including tax/VAT (quantity * unitAmountExcludingTax * calculated tax).</param>
+        /// <param name="lineItemComponents">Components that are affiliate with Lint Item object</param>
+        public LineItem(int id, string articleNumber, string name, string description, decimal quantity, string unitMeasure, decimal unitAmountExcludingTax, decimal taxPercent, decimal totalLineTaxAmount, decimal totalLineAmount, List<LineItemComponent> lineItemComponents)
+            : this(id.ToString(Runtime.Instance.NumberFormatProvider), articleNumber, name, description, quantity, unitMeasure, unitAmountExcludingTax, taxPercent, totalLineTaxAmount, totalLineAmount, lineItemComponents)
         { }
 
         /// <summary>
@@ -94,31 +102,65 @@ namespace Paynova.Api.Client.Model
         /// <param name="id">The id for this line item. This value must be unique per collection of line items.</param>
         /// <param name="articleNumber">The article/product number for the item being sold.</param>
         /// <param name="name">The name/description of the item being sold.</param>
-        /// <param name="unitMeasure">The unit of measure of the product/service being sold. Examples: meters, pieces, st., ea.</param>
-        /// <param name="taxPercent">The tax/VAT percentage for the item being sold. Example: 25</param>
+        /// <param name="description"></param>
         /// <param name="quantity">The number of items being sold at this price.</param>
+        /// <param name="unitMeasure">The unit of measure of the product/service being sold. Examples: meters, pieces, st., ea.</param>
         /// <param name="unitAmountExcludingTax">The price of each unit, excluding tax.</param>
-        /// <param name="totalLineAmount">The total amount charged for this line, including tax/VAT (quantity * unitAmountExcludingTax + calculated tax).</param>
+        /// <param name="taxPercent">The tax/VAT percentage for the item being sold. Example: 25 or null in case that has a list of components</param>
         /// <param name="totalLineTaxAmount">The total tax/VAT amount charged for this line.</param>
-        public LineItem(string id, string articleNumber, string name, string unitMeasure, decimal taxPercent, decimal quantity, decimal unitAmountExcludingTax, decimal totalLineAmount, decimal totalLineTaxAmount)
+        /// <param name="totalLineAmount">The total amount charged for this line, including tax/VAT (quantity * unitAmountExcludingTax * calculated tax).</param>
+        /// <param name="lineItemComponents">Components that are affiliate with Lint Item object</param>
+        public LineItem(string id, string articleNumber, string name, string description, decimal quantity, string unitMeasure, decimal unitAmountExcludingTax, decimal taxPercent, decimal totalLineTaxAmount, decimal totalLineAmount, List<LineItemComponent> lineItemComponents)
         {
             Ensure.That(id, "id").IsNotNullOrEmpty();
             Ensure.That(articleNumber, "articleNumber").IsNotNullOrEmpty();
             Ensure.That(name, "name").IsNotNullOrEmpty();
-            Ensure.That(unitMeasure, "unitMeasure").IsNotNullOrEmpty();
-            Ensure.That(taxPercent, "taxPercent").IsGte(0);
+            Ensure.That(description, "description").IsNotNullOrEmpty();
             Ensure.That(quantity, "quantity").IsGt(0);
-            Ensure.That(unitAmountExcludingTax, "unitAmountExcludingTax").IsGt(0);
+            Ensure.That(unitMeasure, "unitMeasure").IsNotNullOrEmpty();
+            if (unitAmountExcludingTax < 0)
+            {
+                Ensure.That(unitAmountExcludingTax, "unitAmountExcludingTax").IsLt(0);
+            }
+            else
+            {
+                Ensure.That(unitAmountExcludingTax, "unitAmountExcludingTax").IsGte(0);
+            }
+
+            Ensure.That(taxPercent, "taxPercent").IsGte(0);
+            if (totalLineTaxAmount < 0)
+            {
+                Ensure.That(totalLineTaxAmount, "totalLineTaxAmount").IsLt(0);
+            }
+            else if (totalLineTaxAmount == 0)
+            {
+                Ensure.That(totalLineTaxAmount, "totalLineTaxAmount").IsGte(0);
+            }
+            else
+            {
+                Ensure.That(totalLineTaxAmount, "totalLineTaxAmount").IsGt(0);
+            }
+
+            if (totalLineAmount < 0)
+            {
+                Ensure.That(totalLineAmount, "totalLineAmount").IsLt(0);
+            }
+            else
+            {
+                Ensure.That(totalLineAmount, "totalLineAmount").IsGt(0);
+            }
 
             Id = id;
             ArticleNumber = articleNumber;
             Name = name;
-            UnitMeasure = unitMeasure;
-            TaxPercent = taxPercent > 0 && taxPercent < 1 ? taxPercent * 100 : taxPercent;
+            Description = description;
             Quantity = quantity;
+            UnitMeasure = unitMeasure;
             UnitAmountExcludingTax = unitAmountExcludingTax;
-            TotalLineAmount = totalLineAmount;
+            TaxPercent = taxPercent > 0 && taxPercent < 1 ? taxPercent * 100 : taxPercent;
             TotalLineTaxAmount = totalLineTaxAmount;
+            TotalLineAmount = totalLineAmount;
+            Components = lineItemComponents;
         }
 
         /// <summary>

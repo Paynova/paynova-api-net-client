@@ -1,8 +1,8 @@
 ﻿using Paynova.Api.Client.HttpRequestFactories;
 using Paynova.Api.Client.Model;
 using Paynova.Api.Client.Requests;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
 {
@@ -13,7 +13,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             SUT = new GetPaymentOptionsHttpRequestFactory(Runtime, Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_request_It_should_render_correct_relative_url()
         {
             var request = CreateRequest();
@@ -23,7 +23,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostAgainst("/paymentoptions");
         }
 
-        [MyFact]
+        [Fact]
         public void When_creating_request_It_creates_a_http_post_request_with_correct_json()
         {
             var request = CreateRequest();

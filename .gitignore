@@ -14,6 +14,8 @@ deploy/builds
 *.suo
 *.user
 *.sln.docstates
+*.vs
+.ionide
 
 # Build results
 [Dd]ebug/
@@ -182,3 +184,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# Fake
+.fake

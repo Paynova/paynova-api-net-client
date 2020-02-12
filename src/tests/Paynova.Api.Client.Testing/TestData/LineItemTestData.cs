@@ -14,7 +14,7 @@ namespace Paynova.Api.Client.Testing.TestData
             var totalLineAmount = (fakeUnitAmountExcludingTax * n) * (1 + fakeTaxPercent);
             var totalLineTaxAmount = (fakeUnitAmountExcludingTax * n) * fakeTaxPercent;
 
-            return new LineItem("id:" + n, "num:" + n, articleName + n, "st", fakeTaxPercent, n, fakeUnitAmountExcludingTax, totalLineAmount, totalLineTaxAmount)
+            return new LineItem("id:" + n, "num:" + n, articleName + n, "Some product", n, "st", fakeUnitAmountExcludingTax, fakeTaxPercent, totalLineTaxAmount, totalLineAmount, null)
             {
                 Description = "A nice little " + articleName + " " + n,
                 ProductUrl = "http://foo.com/articles/" + n,
