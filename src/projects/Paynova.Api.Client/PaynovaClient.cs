@@ -44,6 +44,7 @@ namespace Paynova.Api.Client
             AuthorizeInvoiceHttpRequestFactory = new AuthorizeInvoiceHttpRequestFactory(Runtime.Instance, Serializer);
             InitializePaymentHttpRequestFactory = new InitializePaymentHttpRequestFactory(Runtime.Instance, Serializer);
             RefundPaymentHttpRequestFactory = new RefundPaymentHttpRequestFactory(Runtime.Instance, Serializer);
+            UpdateFinalizedLineItemsHttpRequestFactory = new UpdateFinalizedLineItemsHttpRequestFactory(Runtime.Instance, Serializer);
             FinalizeAuthorizationHttpRequestFactory = new FinalizeAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             AnnulAuthorizationHttpRequestFactory = new AnnulAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             GetAddressesHttpRequestFactory = new GetAddressesHttpRequestFactory(Runtime.Instance, Serializer);
