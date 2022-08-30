@@ -10,20 +10,20 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
 {
     public class FlowFixture : IResetableFixture
     {
-        private readonly Lazy<GetAddressesRequest> _getAddressesRequest;
-        private readonly Lazy<CreateOrderRequest> _createOrderRequest;
-        private readonly Lazy<AuthorizeInvoiceRequest> _authorizeInvoiceRequest;
-        private readonly Lazy<InitializePaymentRequest> _initializePaymentRequest;
-        private readonly Lazy<FinalizeAuthorizationRequest> _finalizeAuthorizationRequest;
-        private readonly Lazy<AnnulAuthorizationRequest> _annulAuthorizationRequest;
+        private readonly Testing.Lazy<GetAddressesRequest> _getAddressesRequest;
+        private readonly Testing.Lazy<CreateOrderRequest> _createOrderRequest;
+        private readonly Testing.Lazy<AuthorizeInvoiceRequest> _authorizeInvoiceRequest;
+        private readonly Testing.Lazy<InitializePaymentRequest> _initializePaymentRequest;
+        private readonly Testing.Lazy<FinalizeAuthorizationRequest> _finalizeAuthorizationRequest;
+        private readonly Testing.Lazy<AnnulAuthorizationRequest> _annulAuthorizationRequest;
 
         public string OrderNumber { get; private set; }
-        public GetAddressesRequest GetAddressesRequest { get { return _getAddressesRequest.Instance; } }
-        public CreateOrderRequest CreateOrderRequest { get { return _createOrderRequest.Instance; } }
-        public AuthorizeInvoiceRequest AuthorizeInvoiceRequest { get { return _authorizeInvoiceRequest.Instance; } }
-        public InitializePaymentRequest InitializePaymentRequest { get { return _initializePaymentRequest.Instance; } }
-        public FinalizeAuthorizationRequest FinalizeAuthorizationRequest { get { return _finalizeAuthorizationRequest.Instance; } }
-        public AnnulAuthorizationRequest AnnulAuthorizationRequest { get { return _annulAuthorizationRequest.Instance; } }
+        public GetAddressesRequest GetAddressesRequest => _getAddressesRequest.Instance;
+        public CreateOrderRequest CreateOrderRequest => _createOrderRequest.Instance;
+        public AuthorizeInvoiceRequest AuthorizeInvoiceRequest => _authorizeInvoiceRequest.Instance;
+        public InitializePaymentRequest InitializePaymentRequest => _initializePaymentRequest.Instance;
+        public FinalizeAuthorizationRequest FinalizeAuthorizationRequest => _finalizeAuthorizationRequest.Instance;
+        public AnnulAuthorizationRequest AnnulAuthorizationRequest => _annulAuthorizationRequest.Instance;
 
         public GetAddressesResponse GetAddressesResponse { get; set; }
         public CreateOrderResponse CreateOrderResponse { get; set; }
@@ -34,12 +34,12 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
         public FlowFixture()
         {
             OrderNumber = Guid.NewGuid().ToString("n");
-            _getAddressesRequest = new Lazy<GetAddressesRequest>(InitGetAddressesRequest);
-            _createOrderRequest = new Lazy<CreateOrderRequest>(InitCreateOrderRequest);
-            _authorizeInvoiceRequest = new Lazy<AuthorizeInvoiceRequest>(InitAuthorizeInvoiceRequest);
-            _initializePaymentRequest = new Lazy<InitializePaymentRequest>(InitInitializePaymentRequest);
-            _finalizeAuthorizationRequest = new Lazy<FinalizeAuthorizationRequest>(InitFinalizeAuthorizationRequest);
-            _annulAuthorizationRequest = new Lazy<AnnulAuthorizationRequest>(InitAnnulAuthorizationRequest);
+            _getAddressesRequest = new Testing.Lazy<GetAddressesRequest>(InitGetAddressesRequest);
+            _createOrderRequest = new Testing.Lazy<CreateOrderRequest>(InitCreateOrderRequest);
+            _authorizeInvoiceRequest = new Testing.Lazy<AuthorizeInvoiceRequest>(InitAuthorizeInvoiceRequest);
+            _initializePaymentRequest = new Testing.Lazy<InitializePaymentRequest>(InitInitializePaymentRequest);
+            _finalizeAuthorizationRequest = new Testing.Lazy<FinalizeAuthorizationRequest>(InitFinalizeAuthorizationRequest);
+            _annulAuthorizationRequest = new Testing.Lazy<AnnulAuthorizationRequest>(InitAnnulAuthorizationRequest);
         }
 
         public void Reset()
@@ -59,20 +59,18 @@ namespace Paynova.Api.Client.IntegrationTests.Fixtures
 
         protected virtual CreateOrderRequest InitCreateOrderRequest()
         {
-            var address = GetAddressesResponse != null
-                ? GetAddressesResponse.Addresses.FirstOrDefault(a => a.Address.Type == "legal")
-                : null;
+            var address = GetAddressesResponse?.Addresses.FirstOrDefault(a => a.Address.Type == "legal");
             var lineItems = new[]
             {
-                new LineItem(1, "MED-RED-BAL", "Medium red balloon.", "ea.", 25m, 1, 45, 56.25m, 11.25m)
+                new LineItem(1, "MED-RED-BAL", "Medium red balloon.", "some product", 1, "ea.", 25m, 45, 11.25m, 56.25m,  null)
                 {
                     Description = "Line item 1"
                 },
-                new LineItem(2, "MED-RED-BAL", "Medium red balloon.", "ea.", 25m, 2, 45, 112.50m, 22.50m)
+                new LineItem(2, "MED-RED-BAL", "Medium red balloon.", "some product", 2, "ea.", 25m, 45, 22.50m, 112.50m, null)
                 {
                     Description = "Line item 2"
                 },
-                new LineItem(3, "MED-RED-BAL", "Medium red balloon.", "ea.", 25m, 1, 45, 56.25m, 11.25m)
+                new LineItem(3, "MED-RED-BAL", "Medium red balloon.", "some product", 1, "ea.", 25m, 45, 11.25m, 56.25m, null)
                 {
                     Description = "Line item 3"
                 }

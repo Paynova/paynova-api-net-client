@@ -18,6 +18,7 @@ namespace Paynova.Api.Client
         protected IHttpRequestFactory<AuthorizeInvoiceRequest> AuthorizeInvoiceHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<InitializePaymentRequest> InitializePaymentHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<RefundPaymentRequest> RefundPaymentHttpRequestFactory { get; private set; }
+        protected IHttpRequestFactory<UpdateFinalizedLineItemsRequest> UpdateFinalizedLineItemsHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<FinalizeAuthorizationRequest> FinalizeAuthorizationHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<AnnulAuthorizationRequest> AnnulAuthorizationHttpRequestFactory { get; private set; }
         protected IHttpRequestFactory<GetAddressesRequest> GetAddressesHttpRequestFactory { get; private set; }
@@ -44,6 +45,7 @@ namespace Paynova.Api.Client
             AuthorizeInvoiceHttpRequestFactory = new AuthorizeInvoiceHttpRequestFactory(Runtime.Instance, Serializer);
             InitializePaymentHttpRequestFactory = new InitializePaymentHttpRequestFactory(Runtime.Instance, Serializer);
             RefundPaymentHttpRequestFactory = new RefundPaymentHttpRequestFactory(Runtime.Instance, Serializer);
+            UpdateFinalizedLineItemsHttpRequestFactory = new UpdateFinalizedLineItemsHttpRequestFactory(Runtime.Instance, Serializer);
             FinalizeAuthorizationHttpRequestFactory = new FinalizeAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             AnnulAuthorizationHttpRequestFactory = new AnnulAuthorizationHttpRequestFactory(Runtime.Instance, Serializer);
             GetAddressesHttpRequestFactory = new GetAddressesHttpRequestFactory(Runtime.Instance, Serializer);
@@ -93,6 +95,15 @@ namespace Paynova.Api.Client
             var httpResponse = Connection.Send(httpRequest);
 
             return ResponseFactory.Create<RefundPaymentResponse>(httpResponse);
+        }
+
+        public virtual UpdateFinalizedLineItemsResponse UpdateFinalizedLineItems(UpdateFinalizedLineItemsRequest request)
+        {
+            Ensure.That(request, "request").IsNotNull();
+            var httpRequest = UpdateFinalizedLineItemsHttpRequestFactory.Create(request);
+            var httpResponse = Connection.Send(httpRequest);
+
+            return ResponseFactory.Create<UpdateFinalizedLineItemsResponse>(httpResponse);
         }
 
         public virtual AuthorizeInvoiceResponse AuthorizeInvoice(AuthorizeInvoiceRequest request)

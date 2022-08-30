@@ -9,6 +9,9 @@
         public LabelSymbolValue<decimal> InterestRate { get; set; }
         public LabelSymbolValue<decimal> NotificationFee { get; set; }
         public LabelSymbolValue<decimal> SetupFee { get; set; }
+        public LabelSymbolValue<decimal> EffectiveRate { get; set; }
+        public LabelSymbolValue<decimal> TotalCost { get; set; }
+        public LabelSymbolValue<decimal> MonthlyCost { get; set; }
         public decimal? NumberOfInstallments { get; set; }
         public int? InstallmentPeriod { get; set; }
         public string InstallmentUnit { get; set; }

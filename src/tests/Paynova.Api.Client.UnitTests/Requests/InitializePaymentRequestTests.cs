@@ -4,8 +4,8 @@ using FluentAssertions;
 using Paynova.Api.Client.Extensions;
 using Paynova.Api.Client.Model;
 using Paynova.Api.Client.Requests;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.TestData;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Requests
 {
@@ -23,7 +23,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT = new InitializePaymentRequest(Guid.NewGuid(), 112.75m, PaymentChannelId.Web, interfaceOptions);
         }
 
-        [MyFact]
+        [Fact]
         public void When_add_of_line_items_It_should_add_lineItems_in_the_request()
         {
             SUT.WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -33,7 +33,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.LineItems.Length.Should().Be(3);
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_line_items_It_should_overwrite_lineItems_in_the_request()
         {
             SUT.WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -43,7 +43,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.LineItems.Length.Should().Be(3);
         }
 
-        [MyFact]
+        [Fact]
         public void When_clearing_line_items_It_should_remove_all_lineItems_in_the_request()
         {
             SUT.WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -53,7 +53,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.CustomData.Should().BeEmpty();
         }
 
-        [MyFact]
+        [Fact]
         public void When_add_of_custom_data_fields_It_should_add_fields_in_the_request()
         {
             SUT.WithCustomData(CreateCustomDataField(1), CreateCustomDataField(2));
@@ -63,7 +63,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.CustomData.Length.Should().Be(3);
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_custom_data_fields_It_should_overwrite_fields_in_the_request()
         {
             SUT.WithCustomData(CreateCustomDataField(1), CreateCustomDataField(2));
@@ -73,7 +73,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.CustomData.Length.Should().Be(3);
         }
 
-        [MyFact]
+        [Fact]
         public void When_clearing_custom_data_fields_It_should_remove_all_fields_in_the_request()
         {
             SUT.WithCustomData(CreateCustomDataField(1), CreateCustomDataField(2));
@@ -83,7 +83,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.CustomData.Should().BeEmpty();
         }
 
-        [MyFact]
+        [Fact]
         public void When_add_of_payment_methods_It_should_add_methods_in_the_request()
         {
             SUT.WithPaymentMethods(PaymentMethod.Visa);
@@ -93,7 +93,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.PaymentMethods.Length.Should().Be(2);
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_payment_methods_It_should_overwrite_methods_in_the_request()
         {
             SUT.WithPaymentMethods(PaymentMethod.Visa);
@@ -103,7 +103,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.PaymentMethods.Length.Should().Be(2);
         }
 
-        [MyFact]
+        [Fact]
         public void When_clearing_payment_methods_It_should_remove_all_methods_in_the_request()
         {
             SUT.WithPaymentMethods(PaymentMethod.Visa);
@@ -113,7 +113,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.PaymentMethods.Should().BeEmpty();
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_session_timeout_It_should_update_the_request()
         {
             SUT.WithSessionTimeout(100);
@@ -121,7 +121,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.SessionTimeout.Should().Be(100);
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_routing_indicator_profile_It_should_update_the_request()
         {
             SUT.WithRoutingIndicator("test");
@@ -129,7 +129,7 @@ namespace Paynova.Api.Client.UnitTests.Requests
             SUT.RoutingIndicator.Should().Be("test");
         }
 
-        [MyFact]
+        [Fact]
         public void When_setting_fraud_screening_profile_It_should_update_the_request()
         {
             SUT.WithFraudScreeningProfile("test");

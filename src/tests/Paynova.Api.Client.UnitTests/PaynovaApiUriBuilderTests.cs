@@ -1,21 +1,21 @@
 ﻿using System;
 using FluentAssertions;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests
 {
     public class PaynovaApiUriBuilderTests : UnitTestsOf<PaynovaApiUriBuilder>
     {
-        [MyFact]
+        [Fact]
         public void When_not_passing_url_It_will_throw_argument_exception()
         {
             Action a = () => SUT = new PaynovaApiUriBuilder(string.Empty);
 
-            a.ShouldThrow<ArgumentException>()
+            a.Should().Throw<ArgumentException>()
                 .And.ParamName.Should().Be("serverUrl");
         }
 
-        [MyFact]
+        [Fact]
         public void When_only_server_url_It_can_build_uri()
         {
             SUT = new PaynovaApiUriBuilder("https://api.foo.com");
@@ -25,7 +25,7 @@ namespace Paynova.Api.Client.UnitTests
             uri.AbsoluteUri.Should().Be("https://api.foo.com/");
         }
 
-        [MyFact]
+        [Fact]
         public void When_providing_basic_credentials_It_will_build_uri_with_encoded_userinfo()
         {
             SUT = new PaynovaApiUriBuilder("https://api.foo.com")

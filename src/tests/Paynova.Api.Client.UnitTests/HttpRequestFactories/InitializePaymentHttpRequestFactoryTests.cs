@@ -1,8 +1,8 @@
 ﻿using System;
 using Paynova.Api.Client.HttpRequestFactories;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
 using Paynova.Api.Client.Testing.TestData;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
 {
@@ -15,7 +15,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             SUT = new InitializePaymentHttpRequestFactory(Runtime, Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void When_simple_init_payment_It_generates_relative_url_with_order_id()
         {
             var initializePaymentRequest = InitializePaymentRequestTestData.CreateSimple(_orderId);
@@ -27,7 +27,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 _orderId.ToString("n"));
         }
 
-        [MyFact]
+        [Fact]
         public void When_detailed_init_payment_It_generates_relative_url_with_order_id()
         {
             var initializePaymentRequest = InitializePaymentRequestTestData.CreateDetailedWithLineItems(_orderId, 2);
@@ -39,7 +39,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 _orderId.ToString("n"));
         }
 
-        [MyFact]
+        [Fact]
         public void When_simple_init_payment_It_can_create_http_request()
         {
             var initializePaymentRequest = InitializePaymentRequestTestData.CreateSimple(_orderId);
@@ -49,7 +49,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostWithJson(ExpectedJson.SimpleInitPayment);
         }
 
-        [MyFact]
+        [Fact]
         public void When_detailed_init_payment_It_can_create_http_request()
         {
             var createOrderRequest = InitializePaymentRequestTestData.CreateDetailedWithLineItems(_orderId, 2);
@@ -59,7 +59,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostWithJson(ExpectedJson.DetailedInitPaymentRequest_With_LineItems);
         }
 
-        [MyFact]
+        [Fact]
         public void When_detailed_init_payment_with_travel_line_items_It_can_create_http_request()
         {
             var createOrderRequest = InitializePaymentRequestTestData.CreateDetailedWithTravelLineItems(_orderId);

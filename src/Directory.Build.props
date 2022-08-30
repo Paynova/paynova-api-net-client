@@ -1,0 +1,35 @@
+﻿<Project>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Product>Paynova Api Client (Debug)</Product>
+    <AssemblyConfiguration>Debug</AssemblyConfiguration>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Product>Paynova Api Client (Release)</Product>
+    <AssemblyConfiguration>Release</AssemblyConfiguration>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <description>
+      API Client library that helps you get up and running and consuming Paynovas restful API.
+
+      Offers a simple client that handles the HTTP communication with Paynova. It also offers typed requests and responses
+      to assist you in discovering the Paynova API, validating digests etc.
+    </description>
+    <iconUrl>http://www.paynova.com/wp-content/uploads/2015/01/paynova-logo-nuget.png</iconUrl>
+    <projectUrl>https://github.com/paynova/paynova-api-net-client</projectUrl>
+    <licenseUrl>https://github.com/Paynova/paynova-api-net-client/blob/master/LICENCE.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Can be found on project site: https://github.com/Paynova/paynova-api-net-client/wiki/release-notes</releaseNotes>
+    <tags>paynova psp payments</tags>
+
+
+    <Company>Paynova</Company>
+    <Copyright>Copyright © 2019 Paynova</Copyright>
+    <Trademark></Trademark>
+    <Culture></Culture>
+
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>2.0.0</AssemblyFileVersion>
+  </PropertyGroup>
+</Project>

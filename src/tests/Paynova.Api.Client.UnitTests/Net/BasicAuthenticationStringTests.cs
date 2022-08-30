@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using Paynova.Api.Client.Net;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Net
 {
     public class BasicAuthenticationStringTests : UnitTestsOf<BasicAuthenticationStringTests>
     {
-        [MyFact]
+        [Fact]
         public void When_passing_username_and_password_It_initializes_a_base64_encoded_string()
         {
             var sut = new BasicAuthenticationString("testUser", "testPassword");

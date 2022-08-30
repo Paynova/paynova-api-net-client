@@ -1,9 +1,9 @@
 ﻿using System;
 using Paynova.Api.Client.HttpRequestFactories;
 using Paynova.Api.Client.Requests;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
 using Paynova.Api.Client.Testing.TestData;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
 {
@@ -22,7 +22,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             SUT = new AnnulAuthorizationHttpRequestFactory(Runtime, Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void When_order_id_is_not_specified_It_should_render_relative_url_with_transaction_id_and_amount()
         {
             var request = new AnnulAuthorizationRequest(TransactionId, TotalAmount);
@@ -35,7 +35,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 _totalAmountString);
         }
 
-        [MyFact]
+        [Fact]
         public void When_order_id_is_specified_It_should_render_relative_url_with_order_id_and_transaction_id_and_amount()
         {
             var request = new AnnulAuthorizationRequest(TransactionId, _orderId, TotalAmount);
@@ -49,7 +49,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
                 _totalAmountString);
         }
 
-        [MyFact]
+        [Fact]
         public void When_simple_annul_auth_It_can_create_http_request()
         {
             var request = CreateRequest();
@@ -59,7 +59,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostWithJson(ExpectedJson.SimpleAnnulAuth);
         }
 
-        [MyFact]
+        [Fact]
         public void When_annul_auth_It_can_create_http_request()
         {
             var request = CreateRequest().WithLineItems(LineItemTestData.CreateLineItems(2));
@@ -69,7 +69,7 @@ namespace Paynova.Api.Client.UnitTests.HttpRequestFactories
             httpRequest.ShouldBe().PostWithJson(ExpectedJson.AnnulAuth_With_LineItems);
         }
 
-        [MyFact]
+        [Fact]
         public void When_annul_auth_with_travel_line_items_It_can_create_http_request()
         {
             var request = CreateRequest().WithLineItems(LineItemTestData.CreateTravelLineItems());

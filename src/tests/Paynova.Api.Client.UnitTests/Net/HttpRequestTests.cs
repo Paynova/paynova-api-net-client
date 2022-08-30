@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using Paynova.Api.Client.Net;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Net
 {
     public class HttpRequestTests : UnitTestsOf<HttpRequest>
     {
-        [MyFact]
+        [Fact]
         public void When_setting_json_It_should_set_content_and_type()
         {
             const string json = "{\"msg\":\"test\"}";
@@ -18,7 +18,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             SUT.ContentType.Should().Be("application/json");
         }
 
-        [MyFact]
+        [Fact]
         public void When_request_has_content_It_has_content_should_be_true()
         {
             SUT = new HttpRequest("orders/1", "GET");
@@ -28,7 +28,7 @@ namespace Paynova.Api.Client.UnitTests.Net
             SUT.HasContent().Should().BeTrue();
         }
 
-        [MyFact]
+        [Fact]
         public void When_request_has_no_content_It_has_content_should_be_false()
         {
             SUT = new HttpRequest("orders/1", "GET");

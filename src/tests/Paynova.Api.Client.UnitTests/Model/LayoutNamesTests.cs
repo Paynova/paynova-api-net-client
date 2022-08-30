@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Paynova.Api.Client.Model;
-using Paynova.Api.Client.Testing;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Model
 {
@@ -11,13 +11,13 @@ namespace Paynova.Api.Client.UnitTests.Model
             SUT = LayoutNames.Instance;
         }
 
-        [MyFact]
+        [Fact]
         public void It_has_correct_value_for_Desktop()
         {
             SUT.Desktop.Should().Be("Paynova_FullPage_1");
         }
 
-        [MyFact]
+        [Fact]
         public void It_has_correct_value_for_Mobile()
         {
             SUT.Mobile.Should().Be("Paynova_Mobile_1");

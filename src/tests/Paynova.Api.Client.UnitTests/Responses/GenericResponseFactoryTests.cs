@@ -6,8 +6,8 @@ using Paynova.Api.Client.Model;
 using Paynova.Api.Client.Net;
 using Paynova.Api.Client.Resources;
 using Paynova.Api.Client.Responses;
-using Paynova.Api.Client.Testing;
 using Paynova.Api.Client.Testing.Shoulds;
+using Xunit;
 
 namespace Paynova.Api.Client.UnitTests.Responses
 {
@@ -18,7 +18,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             SUT = new GenericResponseFactory(Serializer);
         }
 
-        [MyFact]
+        [Fact]
         public void When_failed_http_response_content_It_will_throw_an_exception()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
@@ -46,13 +46,13 @@ namespace Paynova.Api.Client.UnitTests.Responses
         {
             Action a = () => SUT.Create<TResponse>(httpResponse);
 
-            a.ShouldThrow<PaynovaSdkException>().And.ShouldBe().DueToValidationFailure(
+            a.Should().Throw<PaynovaSdkException>().And.ShouldBe().DueToValidationFailure(
                 ExceptionMessages.PaynovaSdkException_WhileCreatingResponse,
                 typeof(TResponse).Name,
                 "The request contained one or more validation errors.  See the errors collection for further details.");
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_create_order_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
@@ -65,7 +65,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().Ok();
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_authorize_invoice_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
@@ -82,7 +82,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().Ok();
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_initialize_payment_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
@@ -97,7 +97,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().Ok();
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_refund_payment_response_content_It_creates_the_response()
         {
             const decimal totalAmount = 100m;
@@ -116,7 +116,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().RefundedInFull(totalAmount);
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_fully_finalized_auth_response_content_It_creates_the_response()
         {
             const decimal totalAmount = 100m;
@@ -135,7 +135,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().AuthorizedInFull(totalAmount);
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_annul_auth_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Post, HttpStatusCode.OK, "Ok.")
@@ -148,7 +148,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().Ok();
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_get_addresses_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Get, HttpStatusCode.OK, "Ok.")
@@ -173,7 +173,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             response.ShouldBe().Ok();
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_get_payment_options_response_content_It_creates_the_response()
         {
             var httpResponse = new HttpResponse(new Uri("http://foo.com"), HttpMethods.Get, HttpStatusCode.OK, "Ok.")
@@ -202,6 +202,21 @@ namespace Paynova.Api.Client.UnitTests.Responses
                         "        \"label\": \"Uppläggningsavgift\"," +
                         "        \"symbol\": \"kr\"," +
                         "        \"value\": \"95.75\"" +
+                        "    }," +
+                        "    \"effectiveRate\": {" +
+                        "        \"label\": \"Effektiv ränta\"," +
+                        "        \"symbol\": \"%\"," +
+                        "        \"value\": \"28.2\"" +
+                        "    }," +
+                        "    \"totalCost\": {" +
+                        "        \"label\": \"Total kostnad\"," +
+                        "        \"symbol\": \"kr\"," +
+                        "        \"value\": \"11411.28\"" +
+                        "    }," +
+                        "    \"monthlyCost\": {" +
+                        "        \"label\": \"Månadskostnad\"," +
+                        "        \"symbol\": \"kr\"," +
+                        "        \"value\": \"950.94\"" +
                         "    }," +
                         "    \"numberOfInstallments\": 3," +
                         "    \"installmentPeriod\": 1," +
@@ -248,6 +263,25 @@ namespace Paynova.Api.Client.UnitTests.Responses
                     Symbol = "kr",
                     Value = 95.75m
                 },
+                EffectiveRate = new LabelSymbolValue<decimal>
+                {
+                    Label = "Effektiv ränta",
+                    Symbol = "%",
+                    Value = 28.2m
+                },
+                TotalCost = new LabelSymbolValue<decimal>
+                {
+                    Label = "Total kostnad",
+                    Symbol = "kr",
+                    Value = 11411.28m
+                },
+                MonthlyCost = new LabelSymbolValue<decimal>
+                {
+                    Label = "Månadskostnad",
+                    Symbol = "kr",
+                    Value = 950.94m
+                },
+
                 NumberOfInstallments = 3,
                 InstallmentPeriod = 1,
                 InstallmentUnit = "month",
@@ -260,7 +294,7 @@ namespace Paynova.Api.Client.UnitTests.Responses
             });
         }
 
-        [MyFact]
+        [Fact]
         public void When_successful_get_customer_profile_response_content_It_creates_the_response()
         {
             const string profileId = "netsdk";
